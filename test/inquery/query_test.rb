@@ -1,7 +1,7 @@
 require 'test_helper'
-require 'queries/fetch_all_users'
-require 'queries/fetch_users_in_group'
-require 'queries/fetch_groups_as_json'
+require 'queries/user/fetch_all'
+require 'queries/user/fetch_in_group'
+require 'queries/group/fetch_as_json'
 
 module Inquery
   class QueryTest < Minitest::Unit::TestCase
@@ -13,40 +13,40 @@ module Inquery
     end
 
     def test_fetch_all_users
-      result = Queries::FetchAllUsers.run
+      result = Queries::User::FetchAll.run
       assert_equal User.find([1, 2, 3]), result
     end
 
     def test_fetch_all_users_with_invalid_schema
       assert_raises Schemacop::Exceptions::Validation do
-        Queries::FetchAllUsers.run(group_id: 1)
+        Queries::User::FetchAll.run(group_id: 1)
       end
     end
 
     def test_fetch_users_in_group
-      result = Queries::FetchUsersInGroup.run(group_id: 1)
+      result = Queries::User::FetchInGroup.run(group_id: 1)
       assert_equal User.find([1, 2]), result.to_a
 
-      result = Queries::FetchUsersInGroup.run(group_id: 2)
+      result = Queries::User::FetchInGroup.run(group_id: 2)
       assert_equal User.find([1, 3]), result.to_a
 
-      result = Queries::FetchUsersInGroup.run(group_id: 3)
+      result = Queries::User::FetchInGroup.run(group_id: 3)
       assert_equal User.find([2]), result.to_a
     end
 
     def test_fetch_users_in_group_with_invalid_schema
       assert_raises Schemacop::Exceptions::Validation do
-        Queries::FetchUsersInGroup.run
+        Queries::User::FetchInGroup.run
       end
     end
 
     def test_fetch_groups_as_json
-      result = Queries::FetchGroupsAsJson.call
+      result = Queries::Group::FetchAsJson.call
       assert_equal Group.all, result
     end
 
     def test_fetch_groups_as_json_with_process
-      result = Queries::FetchGroupsAsJson.run
+      result = Queries::Group::FetchAsJson.run
       assert_equal Group.all.to_json, result
     end
   end
