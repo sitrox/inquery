@@ -16,6 +16,37 @@ module Inquery
         result = Queries::User::FetchInGroupRel.run(Group.where('ID IN (1, 2)'))
         assert_equal User.find([1, 2, 3]), result.to_a
       end
+
+      def test_fetch_red_groups
+        result = Queries::Group::FetchRed.run
+        assert_equal Group.find([1]), result.to_a
+      end
+
+      def test_fetch_red_groups_via_scope
+        result = Group.red
+        assert_equal Group.find([1]), result.to_a
+      end
+
+      def test_fetch_green_groups_via_scope
+        result = Group.green
+        assert_equal Group.find([2, 3]), result.to_a
+      end
+
+      def test_fetch_green_groups_via_scope_with_where
+        # Where before
+        result = Group.where('id > 2').green
+        assert_equal Group.find([3]), result.to_a
+
+        # Where after
+        result = Group.green.where('id > 2')
+        assert_equal Group.find([3]), result.to_a
+      end
+
+      def test_fetch_green_groups_with_where
+        # With default scope
+        result = Queries::Group::FetchGreen.run(Group.where('id > 2'))
+        assert_equal Group.find([3]), result.to_a
+      end
     end
   end
 end

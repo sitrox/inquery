@@ -3,6 +3,7 @@ ActiveRecord::Schema.define do
 
   create_table :groups, force: true do |t|
     t.string :name
+    t.string :color
     t.timestamps
   end
 

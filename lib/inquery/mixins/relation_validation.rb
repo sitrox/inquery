@@ -19,11 +19,12 @@ module Inquery
 
         # Allows to restrict the number of fields / values the relation must
         # select. Use `nil` to not perform any checks.
-        fields: 1,
+        fields: nil,
 
-        # If this is set to a symbol and the relation does not have any select
-        # fields specified (`select_values` is empty), it will automatically
-        # select the given field. Use `nil` to disable this behavior.
+        # If this is set to a symbol, the relation does not have any select
+        # fields specified (`select_values` is empty) and `fields` is > 0, it
+        # will automatically select the given field. Use `nil` to disable this
+        # behavior.
         default_select: :id,
 
         # This allows to specify a default relation that will be taken if no
@@ -76,7 +77,7 @@ module Inquery
         # ---------------------------------------------------------------
         fields_count = relation.select_values.size
 
-        if fields_count == 0 && options[:default_select]
+        if fields_count == 0 && options[:default_select] && options[:fields] && options[:fields] > 0
           relation = relation.select(options[:default_select])
           fields_count = 1
         end

@@ -14,9 +14,9 @@ module TestHelper
     end
 
     def setup_base_data
-      Group.create!(name: 'Group 1')
-      Group.create!(name: 'Group 2')
-      Group.create!(name: 'Group 3')
+      Group.create!(name: 'Group 1', color: 'red')
+      Group.create!(name: 'Group 2', color: 'green')
+      Group.create!(name: 'Group 3', color: 'green')
 
       User.create!(name: 'User 1', groups: Group.find([1, 2]))
       User.create!(name: 'User 2', groups: Group.find([1, 3]))

@@ -2,13 +2,16 @@ module Inquery
   class Query::Chainable < Query
     include Inquery::Mixins::RelationValidation
 
-    class_attribute :_default_relation
+    # Allows using this class as an AR scope.
+    def self.call(*args)
+      return new(*args).call
+    end
+
+    def call(*args)
+      fail args.inspect
+    end
 
     attr_reader :relation
-
-    def self.default_relation(default_relation)
-      self._default_relation = default_relation
-    end
 
     def initialize(*args)
       relation, params = parse_init_args(*args)
@@ -26,17 +29,17 @@ module Inquery
 
       # new(params)
       elsif args[0].is_a?(Hash) && args[1].nil?
-        relation = _default_relation.call
+        relation = nil
         params = args[0]
 
       # new(relation, params)
       elsif (args[0].is_a?(ActiveRecord::Relation) || args[0].class < ActiveRecord::Base) && args[1].is_a?(Hash)
-        relation = args[0]
+        relation = nil
         params = args[1]
 
       # new()
       elsif args.empty?
-        relation = _default_relation.call
+        relation = nil
         params = {}
 
       # Unknown
