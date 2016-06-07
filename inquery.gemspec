@@ -6,12 +6,13 @@ Gem::Specification.new do |s|
   s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Remo Fritzsche"]
+  s.authors = ["Sitrox"]
   s.date = "2016-06-07"
-  s.files = ["LICENSE"]
+  s.files = [".gitignore", ".releaser_config", ".rubocop.yml", ".yardopts", "Gemfile", "LICENSE", "RUBY_VERSION", "Rakefile", "VERSION", "inquery.gemspec", "lib/inquery.rb", "lib/inquery/exceptions.rb", "lib/inquery/mixins/relation_validation.rb", "lib/inquery/mixins/schema_validation.rb", "lib/inquery/query.rb", "lib/inquery/query/chainable.rb", "test/db/models.rb", "test/db/schema.rb", "test/inquery/query/chainable_test.rb", "test/inquery/query_test.rb", "test/queries/fetch_all_users.rb", "test/queries/fetch_groups_as_json.rb", "test/queries/fetch_users_in_group.rb", "test/queries/fetch_users_in_group_rels.rb", "test/test_helper.rb"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.1.11"
   s.summary = "A skeleton that allows extracting queries into atomic, reusable classes."
+  s.test_files = ["test/db/models.rb", "test/db/schema.rb", "test/inquery/query/chainable_test.rb", "test/inquery/query_test.rb", "test/queries/fetch_all_users.rb", "test/queries/fetch_groups_as_json.rb", "test/queries/fetch_users_in_group.rb", "test/queries/fetch_users_in_group_rels.rb", "test/test_helper.rb"]
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
