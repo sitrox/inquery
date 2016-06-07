@@ -46,8 +46,11 @@ module Inquery
         end
       end
 
-      def validate_relation(relation)
-        options = self.class._relation_options || DEFAULT_OPTIONS
+      # Validates (and possibly alters) the given relation according to the
+      # options specified at class level using the {relation} method.
+      def validate_relation!(relation)
+        options = DEFAULT_OPTIONS.dup
+        options.merge!(self.class._relation_options.dup) if self.class._relation_options
 
         # ---------------------------------------------------------------
         # Validate presence
@@ -79,7 +82,7 @@ module Inquery
         end
 
         if !options[:fields].nil? && fields_count != options[:fields]
-          fail Inquery::Exceptions::InvalidRelation, "Expected given relation to select #{relation[:fields]} fields but got #{fields_count}."
+          fail Inquery::Exceptions::InvalidRelation, "Expected given relation to select #{options[:fields]} field(s) but got #{fields_count}."
         end
 
         return relation

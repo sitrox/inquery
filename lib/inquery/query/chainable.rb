@@ -11,7 +11,8 @@ module Inquery
     end
 
     def initialize(*args)
-      @relation, params = parse_init_args(*args)
+      relation, params = parse_init_args(*args)
+      @relation = validate_relation!(relation)
       super(params)
     end
 

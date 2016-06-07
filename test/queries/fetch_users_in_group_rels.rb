@@ -5,11 +5,11 @@ module Queries
     )
 
     def call
-      relation = validate_relation(self.relation)
-
-      User.where(%(
+      return User.where(%(
         id IN (
-          #{relation.to_sql}
+          SELECT user_id FROM GROUPS_USERS WHERE group_id IN (
+            #{relation.to_sql}
+          )
         )
       ))
     end
