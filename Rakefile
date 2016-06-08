@@ -20,7 +20,7 @@ task :gemspec do
     spec.add_development_dependency 'redcarpet'
     spec.add_dependency 'minitest'
     spec.add_dependency 'activesupport'
-    spec.add_dependency 'activerecord', '~> 4.0.0'
+    spec.add_dependency 'activerecord'
     spec.add_dependency 'schemacop', '>= 1.0.1'
   end
 
