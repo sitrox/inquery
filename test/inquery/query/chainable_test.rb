@@ -17,7 +17,7 @@ module Inquery
         assert_equal User.find([1, 2, 3]), result.to_a
       end
 
-      def test_todo_find_a_name
+      def test_fetch_users_in_group_rels_with_select
         # Fetch all groups user 1 is in
         group_ids_rel = GroupsUser.where(user_id: 1).select(:group_id)
 
