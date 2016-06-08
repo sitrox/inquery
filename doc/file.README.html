@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="label-Inquery">Inquery</h1>
+
+<p>A skeleton that allows extracting queries into atomic, reusable classes.</p>
+
+<h2 id="label-Installation">Installation</h2>
+
+<p>To install the <strong>Inquery</strong> gem:</p>
+
+<pre class="code ruby"><code class="ruby">$ gem install inquery</code></pre>
+
+<p>To install it using <code>bundler</code> (recommended for any application),
+add it to your <code>Gemfile</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>inquery</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h2 id="label-Basic+usage">Basic usage</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>FetchUsersWithACar</span> <span class='op'>&lt;</span> <span class='const'>Inquery</span><span class='op'>::</span><span class='const'>Query</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='lparen'>(</span>
+    <span class='label'>color:</span> <span class='symbol'>:symbol</span>
+  <span class='rparen'>)</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span>
+    <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_joins'>joins</span><span class='lparen'>(</span><span class='symbol'>:cars</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>cars:</span> <span class='lbrace'>{</span> <span class='label'>color:</span> <span class='id identifier rubyid_osparams'>osparams</span><span class='period'>.</span><span class='id identifier rubyid_color'>color</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='const'>FetchUsersWithACar</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span>
+<span class='comment'># =&gt; [&lt;User id: 1 ...]
+</span></code></pre>
+
+<p>Inquery offers its functionality trough two query base classes:
+<span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Inquery::Query</a></span> and <span class='object_link'><a href="Inquery/Query/Chainable.html" title="Inquery::Query::Chainable (class)">Inquery::Query::Chainable</a></span>. See the following
+sections for detailed explanations.</p>
+
+<h2 id="label-Basic+queries">Basic queries</h2>
+
+<p>Basic queries inherit from <span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Inquery::Query</a></span>. They receive an optional set
+of parameters and commonly return a relation / AR result. An optional
+<code>process</code> method lets you perform additional result processing
+steps if needed (i.e. converting the result to a hash or similar).</p>
+
+<p>For this basic functionality, inherit from <span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Inquery::Query</a></span> and overwrite
+the <code>call</code> and optionally the <code>process</code> method:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>FetchRedCarsAsJson</span>
+  <span class='comment'># The `call` method must be overwritten for every query. It is usually called
+</span>  <span class='comment'># via `run`.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span>
+    <span class='const'>Car</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>color:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>red</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># The `process` method can optionally be overwritten. The base implementation
+</span>  <span class='comment'># just returns the unprocessed `results` argument.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_results'>results</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Queries can be called in various ways:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Instantiates the query class and runs `call` and `process`.
+</span><span class='const'>FetchRedCarsAsJson</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+
+<span class='comment'># Instantiates the query class and runs `call`. No result processing
+</span><span class='comment'># is done.
+</span><span class='const'>FetchRedCarsAsJson</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+
+<span class='comment'># You can also instantiate the query class manually.
+</span><span class='const'>FetchRedCarsAsJson</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span>
+
+<span class='comment'># Or just run the `call` method without `process`.
+</span><span class='const'>FetchRedCarsAsJson</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+</code></pre>
+
+<p>Note that it&#39;s perfectly fine for some queries to return
+<code>nil</code>, i.e. if they&#39;re writing queries that don&#39;t fetch
+any results.</p>
+
+<h2 id="label-Chainable+queries">Chainable queries</h2>
+
+<p>Chainable queries are queries that input and output an Active Record
+relation. You can access the given relation using the method
+<code>relation</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Queries</span><span class='op'>::</span><span class='const'>User</span><span class='op'>::</span><span class='const'>FetchActive</span> <span class='op'>&lt;</span> <span class='const'>Inquery</span><span class='op'>::</span><span class='const'>Query</span><span class='op'>::</span><span class='const'>Chainable</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>active:</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Input and output relations may or may not be of the same AR class (i.e. you
+could pass a relation of <code>Group</code>s and receive back a relation of
+corresponding <code>User</code>s).</p>
+
+<h3 id="label-Relation+validation">Relation validation</h3>
+
+<p>Chainable queries allow you to further specify and validate the relation it
+receives. This is done using the static <code>relation</code> method:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Queries</span><span class='op'>::</span><span class='const'>User</span><span class='op'>::</span><span class='const'>FetchActive</span> <span class='op'>&lt;</span> <span class='const'>Inquery</span><span class='op'>::</span><span class='const'>Query</span><span class='op'>::</span><span class='const'>Chainable</span>
+  <span class='comment'># This will raise an exception when passing a relation which does not
+</span>  <span class='comment'># correspond to the `User` model.
+</span>  <span class='id identifier rubyid_relation'>relation</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>User</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='comment'># ....
+</span><span class='kw'>end</span>
+</code></pre>
+
+<p>The <code>relation</code> method accepts the following options:</p>
+<ul><li>
+<p><code>class</code></p>
+
+<p>Allows to restrict the class (attribute <code>klass</code>) of the
+relation. Use <code>nil</code> to not perform any checks. The
+<code>class</code> attribute will also be taken to infer a default if no
+relation is given and you didn&#39;t specify any <code>default</code>.</p>
+</li><li>
+<p><code>default</code></p>
+
+<p>This allows to specify a default relation that will be taken if no relation
+is given. This must be specified as a Proc returning the relation. Set this
+to <code>false</code> for no default. If this is set to <code>nil</code>,
+it will try to infer the default from the option <code>class</code> (if
+given).</p>
+</li><li>
+<p><code>fields</code></p>
+
+<p>Allows to restrict the number of fields / values the relation must select.
+This is particularly useful if you&#39;re using the query as a subquery and
+need it to return exactly one field. Use <code>nil</code> to not perform
+any checks.</p>
+</li><li>
+<p><code>default_select</code></p>
+
+<p>If this is set to a symbol, the relation does not have any select fields
+specified (<code>select_values</code> is empty) and <code>fields</code> is
+&gt; 0, it will automatically select the given field. This option defaults
+to <code>:id</code>. Use <code>nil</code> to disable this behavior.</p>
+</li></ul>
+
+<h3 id="label-Using+query+classes+as+regular+scopes">Using query classes as regular scopes</h3>
+
+<p>Chainable queries can also be used as regular AR model scopes:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>User</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
+  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:active</span><span class='comma'>,</span> <span class='const'>Queries</span><span class='op'>::</span><span class='const'>User</span><span class='op'>::</span><span class='const'>FetchActive</span>
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>Queries</span><span class='op'>::</span><span class='const'>User</span><span class='op'>::</span><span class='const'>FetchActive</span> <span class='op'>&lt;</span> <span class='const'>Inquery</span><span class='op'>::</span><span class='const'>Query</span><span class='op'>::</span><span class='const'>Chainable</span>
+  <span class='comment'># Note that specifying either `class` or `default` is mandatory when using
+</span>  <span class='comment'># this query class as a scope. The reason for this is that, if the scope is
+</span>  <span class='comment'># otherwise empty, the class will receive `nil` from AR and therefore has no
+</span>  <span class='comment'># way of knowing which default class to take.
+</span>  <span class='id identifier rubyid_relation'>relation</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>User</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span>
+    <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>active:</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>This approach allows to you use short and descriptive code like
+<code>User.active</code> but have the possibly complex query code hidden in
+a separate, reusable class.</p>
+
+<p>Note that when using classes as scopes, the <code>process</code> method
+will be ignored.</p>
+
+<h3 id="label-Using+the+given+relation+as+subquery">Using the given relation as subquery</h3>
+
+<p>In simple cases and all the examples above, we just extend the given
+relation and return it again. It is also possible however to just use the
+given relation as a subquery and return a completely new relation:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>FetchUsersInGroup</span> <span class='op'>&lt;</span> <span class='const'>Inquery</span><span class='op'>::</span><span class='const'>Query</span><span class='op'>::</span><span class='const'>Chainable</span>
+  <span class='comment'># Here we do not specify any specific class, as we don&#39;t care for it as long
+</span>  <span class='comment'># as the relation returns exactly one field.
+</span>  <span class='id identifier rubyid_relation'>relation</span> <span class='label'>fields:</span> <span class='int'>1</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>%(</span><span class='tstring_content'>
+      id IN (
+        SELECT user_id FROM GROUPS_USERS WHERE group_id IN (
+          </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_to_sql'>to_sql</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+        )
+      )
+    </span><span class='tstring_end'>)</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>This query could then be called in the following ways:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>FetchUsersInGroup</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span>
+  <span class='const'>GroupsUser</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>user_id:</span> <span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='symbol'>:group_id</span><span class='rparen'>)</span>
+<span class='rparen'>)</span>
+
+<span class='comment'># In this example, we&#39;re not specifying any select for the relation we pass to
+</span><span class='comment'># the query class. This is fine because the query automatically defaults to
+</span><span class='comment'># selecting `id` if exactly one field is required (`fields: 1`) and no select is
+</span><span class='comment'># specifyed. You can control this further with the option `default_select`.
+</span><span class='const'>FetchUsersInGroup</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='const'>Group</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>color:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>red</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+</code></pre>
+
+<h2 id="label-Parameters">Parameters</h2>
+
+<p>Both query classes can be parameterized using a hash called
+<code>params</code>. It is recommended to specify and validate input
+parameters in every query. For this purpose, Inquery provides the
+<code>schema</code> method witch integrates the <a
+href="https://github.com/sitrox/schemacop">Schemacop</a> validation Gem:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>SomeQueryClass</span> <span class='op'>&lt;</span> <span class='const'>Inquery</span><span class='op'>::</span><span class='const'>Query</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='lparen'>(</span>
+    <span class='label'>some_param:</span> <span class='symbol'>:integer</span><span class='comma'>,</span>
+    <span class='label'>some_other_param:</span> <span class='lbrace'>{</span>
+      <span class='label'>hash:</span> <span class='lbrace'>{</span>
+        <span class='label'>some_field:</span> <span class='symbol'>:string</span>
+      <span class='rbrace'>}</span>
+    <span class='rbrace'>}</span>
+  <span class='rparen'>)</span>
+
+  <span class='comment'># ...
+</span><span class='kw'>end</span>
+</code></pre>
+
+<p>The schema is validated at query class instantiation. An exception will be
+raised if the given params do not match the schema specified. See
+documentation of the Schemacop Gem for more information on how to specify
+schemas.</p>
+
+<p>Parameters can be accessed using either <code>params</code> or
+<code>osparams</code>. The method <code>osparams</code> automatically wraps
+<code>params</code> in an <code>OpenStruct</code> for more convenient
+access.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>SomeQueryClass</span> <span class='op'>&lt;</span> <span class='const'>Inquery</span><span class='op'>::</span><span class='const'>Query</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
+    <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span>
+      <span class='label'>active:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:active</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>username:</span> <span class='id identifier rubyid_osparams'>osparams</span><span class='period'>.</span><span class='id identifier rubyid_search'>search</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h2 id="label-Rails+integration">Rails integration</h2>
+
+<p>While it is optional, Inquery has been written from the ground up to be
+perfectly integrated into any Rails application. It has proven to be a
+winning concept to extract all complex queries into separate classes that
+are independently executable and testable.</p>
+
+<h3 id="label-Directory+structure">Directory structure</h3>
+
+<p>While not enforced, it is encouraged to use the following structure for
+storing your query classes:</p>
+<ul><li>
+<p>All domain-specific query classes reside in <code>app/queries</code>.</p>
+</li><li>
+<p>They&#39;re in the module <code>Queries</code>.</p>
+</li><li>
+<p>Queries are further grouped by the model they return (and not the model 
+they receive). For instance, a class fetching all active users could be 
+located at <code>Queries::User::FetchActive</code> and would reside under 
+<code>app/queries/user/fetch_active.rb</code>.</p>
+</li></ul>
+
+<p>There are some key benefits to this approach:</p>
+<ul><li>
+<p>As it should, domain-specific code is located within <code>app/</code>.</p>
+</li><li>
+<p>As queries are grouped by the model they return and consistently named, 
+they&#39;re easy to locate and it does not take much thought where to put
+and  how to name new query classes.</p>
+</li><li>
+<p>As there is a single file per query class, it&#39;s a breeze to list all 
+queries, i.e. to check their naming for consistency.</p>
+</li><li>
+<p>If you&#39;re using the same layout for your unit tests, it is absolutely 
+clear where to find the corresponding unit tests for each one of your 
+query classes.</p>
+</li></ul>
+
+<h2 id="label-Copyright">Copyright</h2>
+
+<p>Copyright © 2016 Sitrox. See <code>LICENSE</code> for further details.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed Jun  8 11:27:52 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>
