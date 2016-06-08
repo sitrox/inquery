@@ -13,7 +13,6 @@ task :gemspec do
 
     spec.add_development_dependency 'bundler', '~> 1.3'
     spec.add_development_dependency 'rake'
-    spec.add_development_dependency 'activerecord', '~> 4.0.0'
     spec.add_development_dependency 'sqlite3'
     spec.add_development_dependency 'haml'
     spec.add_development_dependency 'yard'
@@ -21,7 +20,7 @@ task :gemspec do
     spec.add_development_dependency 'redcarpet'
     spec.add_dependency 'minitest'
     spec.add_dependency 'activesupport'
-    spec.add_dependency 'activerecord'
+    spec.add_dependency 'activerecord', '~> 4.0.0'
     spec.add_dependency 'schemacop', '>= 1.0.1'
   end
 
