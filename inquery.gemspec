@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<minitest>, [">= 0"])
       s.add_runtime_dependency(%q<activesupport>, [">= 0"])
       s.add_runtime_dependency(%q<activerecord>, [">= 0"])
-      s.add_runtime_dependency(%q<schemacop>, ["~> 1.0"])
+      s.add_runtime_dependency(%q<schemacop>, [">= 1.0.1"])
     else
       s.add_dependency(%q<bundler>, ["~> 1.3"])
       s.add_dependency(%q<rake>, [">= 0"])
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<minitest>, [">= 0"])
       s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<activerecord>, [">= 0"])
-      s.add_dependency(%q<schemacop>, ["~> 1.0"])
+      s.add_dependency(%q<schemacop>, [">= 1.0.1"])
     end
   else
     s.add_dependency(%q<bundler>, ["~> 1.3"])
@@ -56,6 +56,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<minitest>, [">= 0"])
     s.add_dependency(%q<activesupport>, [">= 0"])
     s.add_dependency(%q<activerecord>, [">= 0"])
-    s.add_dependency(%q<schemacop>, ["~> 1.0"])
+    s.add_dependency(%q<schemacop>, [">= 1.0.1"])
   end
 end
