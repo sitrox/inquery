@@ -8,30 +8,34 @@ module Inquery
           class: { type: String, null: true, required: false },
           fields: { type: :integer, null: true, required: false },
           default_select: { type: :symbol, null: true, required: false },
-          default: { type: Proc, null: true, required: false }
+          default: { type: [Proc, FalseClass], null: true, required: false }
         }
       }
 
       DEFAULT_OPTIONS = {
-        # Allows to restrict the class (attribute `klass`) of the relation.
-        # Use `nil` to not perform any checks.
+        # Allows to restrict the class (attribute `klass`) of the relation. Use
+        # `nil` to not perform any checks. The `class` attribute will also be
+        # taken to infer a default if no relation is given and you didn't
+        # specify any `default`.
         class: nil,
 
+        # This allows to specify a default relation that will be taken if no
+        # relation is given. This must be specified as a Proc returning the
+        # relation. Set this to `false` for no default. If this is set to `nil`,
+        # it will try to infer the default from the option `class` (if given).
+        default: nil,
+
         # Allows to restrict the number of fields / values the relation must
-        # select. Use `nil` to not perform any checks.
+        # select. This is particularly useful if you're using the query as a
+        # subquery and need it to return exactly one field. Use `nil` to not
+        # perform any checks.
         fields: nil,
 
         # If this is set to a symbol, the relation does not have any select
         # fields specified (`select_values` is empty) and `fields` is > 0, it
         # will automatically select the given field. Use `nil` to disable this
         # behavior.
-        default_select: :id,
-
-        # This allows to specify a default relation that will be taken if no
-        # relation is given. This must be specified as a Proc returning the
-        # relation. Set this to `nil` for no default. Validation will fail if no
-        # relation is given and no default is set.
-        default: nil
+        default_select: :id
       }
 
       included do
@@ -53,12 +57,16 @@ module Inquery
         options = DEFAULT_OPTIONS.dup
         options.merge!(self.class._relation_options.dup) if self.class._relation_options
 
+        relation_class = options[:class].try(:constantize)
+
         # ---------------------------------------------------------------
         # Validate presence
         # ---------------------------------------------------------------
         if relation.nil?
           if options[:default]
             relation = options[:default].call
+          elsif options[:default].nil? && relation_class
+            relation = relation_class.all
           else
             fail Inquery::Exceptions::InvalidRelation, 'A relation must be given for this query.'
           end
@@ -67,9 +75,8 @@ module Inquery
         # ---------------------------------------------------------------
         # Validate class
         # ---------------------------------------------------------------
-        expected_class = options[:class].try(:constantize)
-        if expected_class && expected_class != relation.klass
-          fail Inquery::Exceptions::InvalidRelation, "Unexpected relation class '#{relation.klass}' for this query, expected a '#{expected_class}'."
+        if relation_class && relation_class != relation.klass
+          fail Inquery::Exceptions::InvalidRelation, "Unexpected relation class '#{relation.klass}' for this query, expected a '#{relation_class}'."
         end
 
         # ---------------------------------------------------------------

@@ -17,6 +17,15 @@ module Inquery
         assert_equal User.find([1, 2, 3]), result.to_a
       end
 
+      def test_todo_find_a_name
+        # Fetch all groups user 1 is in
+        group_ids_rel = GroupsUser.where(user_id: 1).select(:group_id)
+
+        # Fetch all users that are in these groups
+        result = Queries::User::FetchInGroupRel.run(group_ids_rel)
+        assert_equal User.find([1, 2, 3]), result.to_a
+      end
+
       def test_fetch_red_groups
         result = Queries::Group::FetchRed.run
         assert_equal Group.find([1]), result.to_a

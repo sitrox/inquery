@@ -1,7 +1,7 @@
 module Queries
   module Group
     class FetchGreen < Inquery::Query::Chainable
-      relation class: 'Group', default: proc { ::Group.all }
+      relation class: 'Group'
 
       def call
         relation.where(color: 'green')

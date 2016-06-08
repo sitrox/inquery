@@ -1,7 +1,7 @@
 module Queries
   module User
     class FetchInGroupRel < Inquery::Query::Chainable
-      relation class: 'Group', fields: 1
+      relation fields: 1
 
       def call
         return ::User.where(%(
