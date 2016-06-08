@@ -52,7 +52,7 @@ module Inquery
       end
 
       # Validates (and possibly alters) the given relation according to the
-      # options specified at class level using the {relation} method.
+      # options specified at class level using the `relation` method.
       def validate_relation!(relation)
         options = DEFAULT_OPTIONS.dup
         options.merge!(self.class._relation_options.dup) if self.class._relation_options
