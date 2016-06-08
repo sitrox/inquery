@@ -1,6 +1,7 @@
 require 'test_helper'
 
 require 'queries/user/fetch_in_group_rel'
+require 'queries/group/filter_with_color'
 
 module Inquery
   class Query
@@ -54,6 +55,11 @@ module Inquery
       def test_fetch_green_groups_with_where
         # With default scope
         result = Queries::Group::FetchGreen.run(Group.where('id > 2'))
+        assert_equal Group.find([3]), result.to_a
+      end
+
+      def test_filter_with_color
+        result = Queries::Group::FilterWithColor.run(Group.where('id > 2'), color: 'green')
         assert_equal Group.find([3]), result.to_a
       end
     end

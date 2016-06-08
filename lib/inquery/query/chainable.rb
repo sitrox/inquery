@@ -34,7 +34,7 @@ module Inquery
 
       # new(relation, params)
       elsif (args[0].is_a?(ActiveRecord::Relation) || args[0].class < ActiveRecord::Base) && args[1].is_a?(Hash)
-        relation = nil
+        relation = args[0]
         params = args[1]
 
       # new()
