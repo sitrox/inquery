@@ -17,12 +17,6 @@ module Inquery
       assert_equal User.find([1, 2, 3]), result
     end
 
-    def test_fetch_all_users_with_invalid_schema
-      assert_raises Schemacop::Exceptions::Validation do
-        Queries::User::FetchAll.run(group_id: 1)
-      end
-    end
-
     def test_fetch_users_in_group
       result = Queries::User::FetchInGroup.run(group_id: 1)
       assert_equal User.find([1, 2]), result.to_a

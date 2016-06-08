@@ -3,14 +3,9 @@ module Inquery
     module SchemaValidation
       extend ActiveSupport::Concern
 
-      DEFAULT_SCHEMA = {
-        type: :hash,
-        hash: {}
-      }
-
       included do
         class_attribute :_schema
-        self._schema = DEFAULT_SCHEMA
+        self._schema = nil
       end
 
       module ClassMethods
