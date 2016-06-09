@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/sitrox/inquery.svg?branch=master)](https://travis-ci.org/sitrox/inquery)
+[![Gem Version](https://badge.fury.io/rb/inquery.svg)](https://badge.fury.io/rb/inquery)
+
 # Inquery
 
 A skeleton that allows extracting queries into atomic, reusable classes.
