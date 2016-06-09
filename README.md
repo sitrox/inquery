@@ -283,6 +283,11 @@ There are some key benefits to this approach:
   clear where to find the corresponding unit tests for each one of your
   query classes.
 
+## Contributors
+
+Thanks to Jeroen Weeink for his insights regarding using query classes as scopes
+in his [blog post](http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html).
+
 ## Copyright
 
 Copyright (c) 2016 Sitrox. See `LICENSE` for further details.
