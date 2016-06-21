@@ -52,7 +52,7 @@ For this basic functionality, inherit from {Inquery::Query} and overwrite
 the `call` and optionally the `process` method:
 
 ```ruby
-class FetchRedCarsAsJson
+class FetchRedCarsAsJson < Inquery::Query
   # The `call` method must be overwritten for every query. It is usually called
   # via `run`.
   def call
