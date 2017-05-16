@@ -24,9 +24,9 @@ gem 'inquery'
 
 ```ruby
 class FetchUsersWithACar < Inquery::Query
-  schema(
-    color: :symbol
-  )
+  schema do
+    req :color, :symbol
+  end
 
   def call
     User.joins(:cars).where(cars: { color: osparams.color })
@@ -223,14 +223,12 @@ purpose, Inquery provides the `schema` method witch integrates the
 
 ```ruby
 class SomeQueryClass < Inquery::Query
-  schema(
-    some_param: :integer,
-    some_other_param: {
-      hash: {
-        some_field: :string
-      }
-    }
-  )
+  schema do
+    req :some_param, :integer
+    opt :some_other_param, :hash do
+      req :some_field, :string
+    end
+  end
 
   # ...
 end

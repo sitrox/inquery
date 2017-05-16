@@ -22,7 +22,7 @@ module Inquery
       @params = params
 
       if self.class._schema
-        Schemacop.validate!(self.class._schema, @params)
+        self.class._schema.validate!(@params)
       end
     end
 

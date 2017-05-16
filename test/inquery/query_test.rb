@@ -4,7 +4,7 @@ require 'queries/user/fetch_in_group'
 require 'queries/group/fetch_as_json'
 
 module Inquery
-  class QueryTest < Minitest::Unit::TestCase
+  class QueryTest < Minitest::Test
     include TestHelper
 
     def setup
@@ -29,7 +29,7 @@ module Inquery
     end
 
     def test_fetch_users_in_group_with_invalid_schema
-      assert_raises Schemacop::Exceptions::Validation do
+      assert_raises Schemacop::Exceptions::ValidationError do
         Queries::User::FetchInGroup.run
       end
     end
