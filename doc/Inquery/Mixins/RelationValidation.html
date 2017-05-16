@@ -110,14 +110,12 @@
       <dt id="OPTIONS_SCHEMA-constant" class="">OPTIONS_SCHEMA =
         
       </dt>
-      <dd><pre class="code"><span class='lbrace'>{</span>
-  <span class='label'>hash:</span> <span class='lbrace'>{</span>
-    <span class='label'>class:</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='const'>String</span><span class='comma'>,</span> <span class='label'>null:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>required:</span> <span class='kw'>false</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-    <span class='label'>fields:</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbol'>:integer</span><span class='comma'>,</span> <span class='label'>null:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>required:</span> <span class='kw'>false</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-    <span class='label'>default_select:</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbol'>:symbol</span><span class='comma'>,</span> <span class='label'>null:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>required:</span> <span class='kw'>false</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-    <span class='label'>default:</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='lbracket'>[</span><span class='const'>Proc</span><span class='comma'>,</span> <span class='const'>FalseClass</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>null:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>required:</span> <span class='kw'>false</span> <span class='rbrace'>}</span>
-  <span class='rbrace'>}</span>
-<span class='rbrace'>}</span></pre></dd>
+      <dd><pre class="code"><span class='const'>Schemacop</span><span class='op'>::</span><span class='const'>Schema</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_opt'>opt</span> <span class='symbol'>:class</span><span class='comma'>,</span> <span class='symbol'>:string</span>
+  <span class='id identifier rubyid_opt'>opt</span> <span class='symbol'>:fields</span><span class='comma'>,</span> <span class='symbol'>:integer</span>
+  <span class='id identifier rubyid_opt'>opt</span> <span class='symbol'>:default_select</span><span class='comma'>,</span> <span class='symbol'>:symbol</span>
+  <span class='id identifier rubyid_opt'>opt</span> <span class='symbol'>:default</span><span class='comma'>,</span> <span class='symbol'>:object</span><span class='comma'>,</span> <span class='label'>classes:</span> <span class='lbracket'>[</span><span class='const'>Proc</span><span class='comma'>,</span> <span class='const'>FalseClass</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre></dd>
     
       <dt id="DEFAULT_OPTIONS-constant" class="">DEFAULT_OPTIONS =
         
@@ -223,6 +221,8 @@ options specified at class level using the <code>relation</code> method.</p>
       <pre class="lines">
 
 
+54
+55
 56
 57
 58
@@ -262,12 +262,10 @@ options specified at class level using the <code>relation</code> method.</p>
 92
 93
 94
-95
-96
-97</pre>
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inquery/mixins/relation_validation.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/inquery/mixins/relation_validation.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_relation!'>validate_relation!</span><span class='lparen'>(</span><span class='id identifier rubyid_relation'>relation</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#DEFAULT_OPTIONS-constant" title="Inquery::Mixins::RelationValidation::DEFAULT_OPTIONS (constant)">DEFAULT_OPTIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -321,7 +319,7 @@ options specified at class level using the <code>relation</code> method.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue May 16 10:49:05 2017 by
+  Generated on Tue May 16 13:42:30 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.3.1).
 </div>

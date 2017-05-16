@@ -80,9 +80,9 @@ to your <code>Gemfile</code>:</p>
 <h2>Basic usage</h2>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>FetchUsersWithACar</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Inquery.html" title="Inquery (module)">Inquery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Query</a></span></span>
-  <span class='id identifier rubyid_schema'>schema</span><span class='lparen'>(</span>
-    <span class='label'>color:</span> <span class='symbol'>:symbol</span>
-  <span class='rparen'>)</span>
+  <span class='id identifier rubyid_schema'>schema</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_req'>req</span> <span class='symbol'>:color</span><span class='comma'>,</span> <span class='symbol'>:symbol</span>
+  <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span>
     <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_joins'>joins</span><span class='lparen'>(</span><span class='symbol'>:cars</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>cars:</span> <span class='lbrace'>{</span> <span class='label'>color:</span> <span class='id identifier rubyid_osparams'>osparams</span><span class='period'>.</span><span class='id identifier rubyid_color'>color</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -269,14 +269,12 @@ purpose, Inquery provides the <code>schema</code> method witch integrates the
 <a href="https://github.com/sitrox/schemacop">Schemacop</a> validation Gem:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>SomeQueryClass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Inquery.html" title="Inquery (module)">Inquery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Query</a></span></span>
-  <span class='id identifier rubyid_schema'>schema</span><span class='lparen'>(</span>
-    <span class='label'>some_param:</span> <span class='symbol'>:integer</span><span class='comma'>,</span>
-    <span class='label'>some_other_param:</span> <span class='lbrace'>{</span>
-      <span class='label'>hash:</span> <span class='lbrace'>{</span>
-        <span class='label'>some_field:</span> <span class='symbol'>:string</span>
-      <span class='rbrace'>}</span>
-    <span class='rbrace'>}</span>
-  <span class='rparen'>)</span>
+  <span class='id identifier rubyid_schema'>schema</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_req'>req</span> <span class='symbol'>:some_param</span><span class='comma'>,</span> <span class='symbol'>:integer</span>
+    <span class='id identifier rubyid_opt'>opt</span> <span class='symbol'>:some_other_param</span><span class='comma'>,</span> <span class='symbol'>:hash</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_req'>req</span> <span class='symbol'>:some_field</span><span class='comma'>,</span> <span class='symbol'>:string</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
   <span class='comment'># ...
 </span><span class='kw'>end</span>
@@ -347,7 +345,7 @@ And special thanks to <a href="http://www.subgit.com/">SubGit</a> for their grea
 </div></div>
 
       <div id="footer">
-  Generated on Tue May 16 10:49:05 2017 by
+  Generated on Tue May 16 13:42:29 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.3.1).
 </div>
