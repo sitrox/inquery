@@ -9,15 +9,8 @@ module Inquery
       end
 
       module ClassMethods
-        def schema(schema)
-          fail 'Schema must be a hash.' unless schema.is_a?(Hash)
-
-          unless schema[:type]
-            schema = {
-              type: :hash,
-              hash: schema
-            }
-          end
+        def schema(*args, &block)
+          schema = Schemacop::Schema.new(*args, &block)
 
           self._schema = schema
         end

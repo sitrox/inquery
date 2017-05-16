@@ -29,7 +29,7 @@ module Inquery
     end
 
     def test_fetch_users_in_group_with_invalid_schema
-      assert_raises Schemacop::Exceptions::Validation do
+      assert_raises Schemacop::Exceptions::ValidationError do
         Queries::User::FetchInGroup.run
       end
     end

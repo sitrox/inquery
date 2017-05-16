@@ -3,14 +3,12 @@ module Inquery
     module RelationValidation
       extend ActiveSupport::Concern
 
-      OPTIONS_SCHEMA = {
-        hash: {
-          class: { type: String, null: true, required: false },
-          fields: { type: :integer, null: true, required: false },
-          default_select: { type: :symbol, null: true, required: false },
-          default: { type: [Proc, FalseClass], null: true, required: false }
-        }
-      }
+      OPTIONS_SCHEMA = Schemacop::Schema.new do
+        opt :class, :string
+        opt :fields, :integer
+        opt :default_select, :symbol
+        opt :default, :object, classes: [Proc, FalseClass]
+      end
 
       DEFAULT_OPTIONS = {
         # Allows to restrict the class (attribute `klass`) of the relation. Use
@@ -46,7 +44,7 @@ module Inquery
         # Allows to configure the parameters of the relation this query operates
         # on. See {OPTIONS_SCHEMA} for documentation of the options hash.
         def relation(options = {})
-          Schemacop.validate!(OPTIONS_SCHEMA, options)
+          OPTIONS_SCHEMA.validate!(options)
           self._relation_options = options
         end
       end

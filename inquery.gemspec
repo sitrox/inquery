@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<minitest>.freeze, [">= 0"])
       s.add_runtime_dependency(%q<activesupport>.freeze, [">= 0"])
       s.add_runtime_dependency(%q<activerecord>.freeze, [">= 0"])
-      s.add_runtime_dependency(%q<schemacop>.freeze, ["~> 1"])
+      s.add_runtime_dependency(%q<schemacop>.freeze, ["~> 2"])
     else
       s.add_dependency(%q<bundler>.freeze, ["~> 1.3"])
       s.add_dependency(%q<rake>.freeze, [">= 0"])
@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<minitest>.freeze, [">= 0"])
       s.add_dependency(%q<activesupport>.freeze, [">= 0"])
       s.add_dependency(%q<activerecord>.freeze, [">= 0"])
-      s.add_dependency(%q<schemacop>.freeze, ["~> 1"])
+      s.add_dependency(%q<schemacop>.freeze, ["~> 2"])
     end
   else
     s.add_dependency(%q<bundler>.freeze, ["~> 1.3"])
@@ -53,6 +53,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<minitest>.freeze, [">= 0"])
     s.add_dependency(%q<activesupport>.freeze, [">= 0"])
     s.add_dependency(%q<activerecord>.freeze, [">= 0"])
-    s.add_dependency(%q<schemacop>.freeze, ["~> 1"])
+    s.add_dependency(%q<schemacop>.freeze, ["~> 2"])
   end
 end
