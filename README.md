@@ -294,4 +294,4 @@ And special thanks to [SubGit](http://www.subgit.com/) for their great open sour
 
 ## Copyright
 
-Copyright (c) 2016 Sitrox. See `LICENSE` for further details.
+Copyright (c) 2017 Sitrox. See `LICENSE` for further details.
