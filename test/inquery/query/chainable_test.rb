@@ -5,7 +5,7 @@ require 'queries/group/filter_with_color'
 
 module Inquery
   class Query
-    class ChainableTest < Minitest::Unit::TestCase
+    class ChainableTest < Minitest::Test
       include TestHelper
 
       def setup
