@@ -47,5 +47,11 @@ module Inquery
     def osparams
       @osparams ||= OpenStruct.new(params)
     end
+
+    # Provides a connection to the database. May be overridden if a different
+    # connection is desired. Defaults to `ActiveRecord::Base.connection`.
+    def connection
+      ActiveRecord::Base.connection
+    end
   end
 end
