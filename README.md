@@ -87,6 +87,37 @@ FetchRedCarsAsJson.new(params = {}).call
 Note that it's perfectly fine for some queries to return `nil`, i.e. if they're
 writing queries that don't fetch any results.
 
+### Using raw SQL
+
+In some cases it may make sense to push down all computation to the database and
+only construct an SQL query for this purpose. To facilitate this,
+{Inquery::Query} provides sanitization and query execution methods:
+
+```ruby
+# Note: There are better ways of achieving the same result, this is an example
+# to demonstrate the methods.
+class CheckIfSold < Inquery::Query
+  def call
+    parts = [
+      'SELECT car_id FROM dealership_sales',
+      'SELECT car_id FROM dealership_leasings'
+    ]
+
+    sql = 'SELECT ? IN (' + parts.join(' UNION ') + ')'
+
+    # The 'san' method takes n+1 arguments: The SQL string and n parameters
+    sanitized_sql = san(sql, osparams.car_id)
+
+    # Returns instance of ActiveRecord::Result
+    return exec_query(sanitized_sql)
+  end
+
+  def process(results)
+    results.rows.first.first
+  end
+end
+```
+
 ## Chainable queries
 
 Chainable queries are queries that input and output an Active Record relation.

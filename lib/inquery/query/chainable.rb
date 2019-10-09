@@ -19,6 +19,11 @@ module Inquery
       super(params)
     end
 
+    # Override the connection method to (re-)use the connection of the relation
+    def connection
+      @relation.connection
+    end
+
     private
 
     def parse_init_args(*args)
