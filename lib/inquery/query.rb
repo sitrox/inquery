@@ -1,6 +1,7 @@
 module Inquery
   class Query
     include Mixins::SchemaValidation
+    include Mixins::RawSqlUtils
 
     attr_reader :params
 
