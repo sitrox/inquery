@@ -1,8 +1,8 @@
 # Change log
 
-## Unreleased
+## 1.0.2 (2019-10-09)
 
-- Added new mixin `RawSqlUtils`, which provides two methods for
+- Add new mixin `RawSqlUtils`, which provides two methods for
   `Inquery::Query`:
 
     - `san`: Sanitizes SQL and performs parameter substitution
