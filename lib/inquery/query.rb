@@ -22,8 +22,8 @@ module Inquery
     def initialize(params = {})
       @params = params
 
-      if self.class._schema
-        self.class._schema.validate!(@params)
+      if _schema
+        @params = _schema.validate!(@params)
       end
     end
 

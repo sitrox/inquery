@@ -1,5 +1,10 @@
 # Change log
 
+## UNRELEASED
+
+- Overwrite parameter hash with the casted version if using 
+  casting inside the schemacop `schema` block
+
 ## 1.0.2 (2019-10-09)
 
 - Add new mixin `RawSqlUtils`, which provides two methods for
