@@ -1,6 +1,6 @@
 # Change log
 
-## UNRELEASED
+## 1.0.3 (2020-05-12)
 
 - Overwrite parameter hash with the casted version if using 
   casting inside the schemacop `schema` block
