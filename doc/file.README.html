@@ -6,15 +6,15 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "README";
   relpath = '';
 </script>
@@ -60,11 +60,11 @@
       <div id="content"><div id='filecontents'><p><a href="https://travis-ci.org/sitrox/inquery"><img src="https://travis-ci.org/sitrox/inquery.svg?branch=master" alt="Build Status"></a>
 <a href="https://badge.fury.io/rb/inquery"><img src="https://badge.fury.io/rb/inquery.svg" alt="Gem Version"></a></p>
 
-<h1>Inquery</h1>
+<h1 id="inquery">Inquery</h1>
 
 <p>A skeleton that allows extracting queries into atomic, reusable classes.</p>
 
-<h2>Installation</h2>
+<h2 id="installation">Installation</h2>
 
 <p>To install the <strong>Inquery</strong> gem:</p>
 
@@ -77,7 +77,7 @@ to your <code>Gemfile</code>:</p>
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>inquery</span><span class='tstring_end'>&#39;</span></span>
 </code></pre>
 
-<h2>Basic usage</h2>
+<h2 id="basic-usage">Basic usage</h2>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>FetchUsersWithACar</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Inquery.html" title="Inquery (module)">Inquery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Query</a></span></span>
   <span class='id identifier rubyid_schema'>schema</span> <span class='kw'>do</span>
@@ -97,7 +97,7 @@ to your <code>Gemfile</code>:</p>
 and <span class='object_link'><a href="Inquery/Query/Chainable.html" title="Inquery::Query::Chainable (class)">Inquery::Query::Chainable</a></span>. See the following sections for detailed
 explanations.</p>
 
-<h2>Basic queries</h2>
+<h2 id="basic-queries">Basic queries</h2>
 
 <p>Basic queries inherit from <span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Inquery::Query</a></span>. They receive an optional set of
 parameters and commonly return a relation / AR result. An optional <code>process</code>
@@ -141,7 +141,7 @@ the <code>call</code> and optionally the <code>process</code> method:</p>
 <p>Note that it&#39;s perfectly fine for some queries to return <code>nil</code>, i.e. if they&#39;re
 writing queries that don&#39;t fetch any results.</p>
 
-<h3>Using raw SQL</h3>
+<h3 id="using-raw-sql">Using raw SQL</h3>
 
 <p>In some cases it may make sense to push down all computation to the database and
 only construct an SQL query for this purpose. To facilitate this,
@@ -171,7 +171,7 @@ only construct an SQL query for this purpose. To facilitate this,
 <span class='kw'>end</span>
 </code></pre>
 
-<h2>Chainable queries</h2>
+<h2 id="chainable-queries">Chainable queries</h2>
 
 <p>Chainable queries are queries that input and output an Active Record relation.
 You can access the given relation using the method <code>relation</code>:</p>
@@ -187,7 +187,7 @@ You can access the given relation using the method <code>relation</code>:</p>
 could pass a relation of <code>Group</code>s and receive back a relation of corresponding
 <code>User</code>s).</p>
 
-<h3>Relation validation</h3>
+<h3 id="relation-validation">Relation validation</h3>
 
 <p>Chainable queries allow you to further specify and validate the relation it
 receives. This is done using the static <code>relation</code> method:</p>
@@ -229,7 +229,7 @@ automatically select the given field. This option defaults to <code>:id</code>. 
 <code>nil</code> to disable this behavior.</p></li>
 </ul>
 
-<h3>Using query classes as regular scopes</h3>
+<h3 id="using-query-classes-as-regular-scopes">Using query classes as regular scopes</h3>
 
 <p>Chainable queries can also be used as regular AR model scopes:</p>
 
@@ -255,7 +255,7 @@ but have the possibly complex query code hidden in a separate, reusable class.</
 
 <p>Note that when using classes as scopes, the <code>process</code> method will be ignored.</p>
 
-<h3>Using the given relation as subquery</h3>
+<h3 id="using-the-given-relation-as-subquery">Using the given relation as subquery</h3>
 
 <p>In simple cases and all the examples above, we just extend the given relation
 and return it again. It is also possible however to just use the given relation
@@ -291,7 +291,7 @@ as a subquery and return a completely new relation:</p>
 </span><span class='const'>FetchUsersInGroup</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='const'>Group</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>color:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>red</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
 </code></pre>
 
-<h2>Parameters</h2>
+<h2 id="parameters">Parameters</h2>
 
 <p>Both query classes can be parameterized using a hash called <code>params</code>. It is
 recommended to specify and validate input parameters in every query. For this
@@ -328,14 +328,14 @@ access.</p>
 <span class='kw'>end</span>
 </code></pre>
 
-<h2>Rails integration</h2>
+<h2 id="rails-integration">Rails integration</h2>
 
 <p>While it is optional, Inquery has been written from the ground up to be
 perfectly integrated into any Rails application. It has proven to be a winning
 concept to extract all complex queries into separate classes that are
 independently executable and testable.</p>
 
-<h3>Directory structure</h3>
+<h3 id="directory-structure">Directory structure</h3>
 
 <p>While not enforced, it is encouraged to use the following structure for storing
 your query classes:</p>
@@ -363,20 +363,20 @@ clear where to find the corresponding unit tests for each one of your
 query classes.</li>
 </ul>
 
-<h2>Contributors</h2>
+<h2 id="contributors">Contributors</h2>
 
 <p>Thanks to Jeroen Weeink for his insights regarding using query classes as scopes
 in his <a href="http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html">blog post</a>.</p>
 
-<h2>Copyright</h2>
+<h2 id="copyright">Copyright</h2>
 
-<p>Copyright (c) 2019 Sitrox. See <code>LICENSE</code> for further details.</p>
+<p>Copyright (c) 2020 Sitrox. See <code>LICENSE</code> for further details.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Wed Oct  9 16:20:53 2019 by
+  Generated on Tue May 12 13:33:18 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.6.2).
+  0.9.25 (ruby-2.6.2).
 </div>
 
     </div>
