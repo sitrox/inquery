@@ -10,7 +10,11 @@ module Inquery
 
       module ClassMethods
         def schema(*args, &block)
-          schema = Schemacop::Schema.new(*args, &block)
+          if defined?(Schemacop::V2)
+            schema = Schemacop::V2::Schema.new(*args, &block)
+          else
+            schema = Schemacop::Schema.new(*args, &block)
+          end
 
           self._schema = schema
         end

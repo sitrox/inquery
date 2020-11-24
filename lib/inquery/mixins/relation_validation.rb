@@ -3,11 +3,20 @@ module Inquery
     module RelationValidation
       extend ActiveSupport::Concern
 
-      OPTIONS_SCHEMA = Schemacop::Schema.new do
-        opt :class, :string
-        opt :fields, :integer
-        opt :default_select, :symbol
-        opt :default, :object, classes: [Proc, FalseClass]
+      if defined?(Schemacop::V2)
+        OPTIONS_SCHEMA = Schemacop::Node.create :object do
+          str? :class
+          int? :fields
+          sym? :default_select
+          rby? :default, [Proc, FalseClass]
+        end
+      else
+        OPTIONS_SCHEMA = Schemacop::Schema.new do
+          opt :class, :string
+          opt :fields, :integer
+          opt :default_select, :symbol
+          opt :default, :object, classes: [Proc, FalseClass]
+        end
       end
 
       DEFAULT_OPTIONS = {

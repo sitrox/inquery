@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.4 (2020-11-24)
+
+- Add support for schemacop 3.x (but still using 2.x schema version)
+
 ## 1.0.3 (2020-05-12)
 
 - Overwrite parameter hash with the casted version if using 
