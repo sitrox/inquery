@@ -148,13 +148,21 @@
 13
 14
 15
-16</pre>
+16
+17
+18
+19
+20</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inquery/mixins/schema_validation.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_schema'>schema</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_schema'>schema</span> <span class='op'>=</span> <span class='const'>Schemacop</span><span class='op'>::</span><span class='const'>Schema</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='const'>Schemacop</span><span class='op'>::</span><span class='const'>V2</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_schema'>schema</span> <span class='op'>=</span> <span class='const'>Schemacop</span><span class='op'>::</span><span class='const'>V2</span><span class='op'>::</span><span class='const'>Schema</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_schema'>schema</span> <span class='op'>=</span> <span class='const'>Schemacop</span><span class='op'>::</span><span class='const'>Schema</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__schema'>_schema</span> <span class='op'>=</span> <span class='id identifier rubyid_schema'>schema</span>
 <span class='kw'>end</span></pre>
@@ -168,7 +176,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue May 12 13:33:18 2020 by
+  Generated on Tue Nov 24 16:32:43 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.6.2).
 </div>
