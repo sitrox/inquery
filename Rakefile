@@ -21,7 +21,7 @@ task :gemspec do
     spec.add_dependency 'minitest'
     spec.add_dependency 'activesupport'
     spec.add_dependency 'activerecord'
-    spec.add_dependency 'schemacop', '~> 2.0'
+    spec.add_dependency 'schemacop', '>= 2.0'
   end
 
   File.open('inquery.gemspec', 'w') { |f| f.write(gemspec.to_ruby.strip) }
