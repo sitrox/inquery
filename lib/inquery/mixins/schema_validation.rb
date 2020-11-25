@@ -17,7 +17,7 @@ module Inquery
           if reference
             self._schema = Schemacop::Schema3.new(:reference, options.merge(path: reference))
           else
-            self._schema = Schemacop::Schema3.new(:object, **options, &block)
+            self._schema = Schemacop::Schema3.new(:hash, **options, &block)
           end
         end
 

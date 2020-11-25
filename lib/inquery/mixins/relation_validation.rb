@@ -4,7 +4,7 @@ module Inquery
       extend ActiveSupport::Concern
 
       if defined?(Schemacop::V2)
-        OPTIONS_SCHEMA = Schemacop::Schema.new(:object) do
+        OPTIONS_SCHEMA = Schemacop::Schema.new(:hash) do
           str? :class
           int? :fields
           sym? :default_select
