@@ -3,7 +3,7 @@ module Inquery
     module RelationValidation
       extend ActiveSupport::Concern
 
-      if defined?(Schemacop::V3)
+      if defined?(Schemacop::Schema3)
         OPTIONS_SCHEMA = Schemacop::Schema3.new(:hash) do
           str? :class
           int? :fields
