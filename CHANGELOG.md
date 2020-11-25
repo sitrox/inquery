@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.8 (2020-11-24)
+
+- Improve support for schemacop 3.x
+
 ## 1.0.7 (2020-11-24)
 
 - Improve support for schemacop 3.x
