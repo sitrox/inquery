@@ -9,14 +9,21 @@ module Inquery
       end
 
       module ClassMethods
-        def schema(*args, &block)
-          if defined?(Schemacop::V2)
-            schema = Schemacop::V2::Schema.new(*args, &block)
-          else
-            schema = Schemacop::Schema.new(*args, &block)
-          end
+        def schema2(*args, &block)
+          self._schema = Schemacop::Schema.new(*args, &block)
+        end
 
-          self._schema = schema
+        def schema3(reference = nil, **options, &block)
+          if reference
+            self._schema = Schemacop::Schema3.new(:reference, options.merge(path: reference))
+          else
+            self._schema = Schemacop::Schema3.new(:object, **options, &block)
+          end
+        end
+
+        # @see schema2
+        def schema(*args, &block)
+          schema2(*args, &block)
         end
       end
     end

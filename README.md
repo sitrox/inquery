@@ -284,6 +284,9 @@ class SomeQueryClass < Inquery::Query
 end
 ```
 
+Inquery supports both schemacop specification versions 2 and 3 using the methods
+`schema` / `schema2` for version 2 and method `schema3` for version 3.
+
 ## Rails integration
 
 While it is optional, Inquery has been written from the ground up to be
