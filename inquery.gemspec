@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: inquery 1.0.7 ruby lib
+# stub: inquery 1.0.8 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "inquery".freeze
-  s.version = "1.0.7"
+  s.version = "1.0.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
