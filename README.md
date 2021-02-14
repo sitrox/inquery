@@ -325,4 +325,4 @@ in his [blog post](http://craftingruby.com/posts/2015/06/29/query-objects-throug
 
 ## Copyright
 
-Copyright (c) 2020 Sitrox. See `LICENSE` for further details.
+Copyright © 2016 - 2021 Sitrox. See `LICENSE` for further details.
