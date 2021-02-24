@@ -1,14 +1,31 @@
 AllCops:
+  NewCops: enable
   Exclude:
     - 'local/**/*'
     - 'vendor/**/*'
     - 'tmp/**/*'
-    - '*.gemspec'
+    - 'inquery.gemspec'
 
   DisplayCopNames: true
 
+Style/SignalException:
+  EnforcedStyle: only_fail
+
 Metrics/MethodLength:
   Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: false
 
 Metrics/AbcSize:
   Enabled: False
@@ -19,8 +36,11 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Enabled: False
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 160
+
+Metrics/BlockNesting:
+  Enabled: false
 
 Style/IfUnlessModifier:
   Enabled: false
@@ -29,6 +49,9 @@ Style/Documentation:
   Enabled: false
 
 Style/RedundantReturn:
+  Enabled: false
+
+Style/AsciiComments:
   Enabled: false
 
 Style/GuardClause:
@@ -40,3 +63,41 @@ Style/ClassAndModuleChildren:
   SupportedStyles:
     - nested
     - compact
+  # Checks the style of children definitions at classes and modules.
+  #
+  # Basically there are two different styles:
+  #
+  # `nested` - have each child on a separate line
+  #   class Foo
+  #     class Bar
+  #     end
+  #   end
+  #
+  # `compact` - combine definitions as much as possible
+  #   class Foo::Bar
+  #   end
+  #
+  # The compact style is only forced, for classes / modules with one child.
+
+Style/FormatString:
+  Enabled: false
+
+# Multiline hashes should be aligned cleanly as a table to improve readability.
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/CaseLikeIf:
+  Enabled: false
