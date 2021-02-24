@@ -6,7 +6,7 @@
 <title>
   Module: Inquery::Mixins::RelationValidation
   
-    &mdash; Documentation by YARD 0.9.25
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
@@ -130,26 +130,26 @@
 </span>  <span class='comment'># `nil` to not perform any checks. The `class` attribute will also be
 </span>  <span class='comment'># taken to infer a default if no relation is given and you didn&#39;t
 </span>  <span class='comment'># specify any `default`.
-</span>  <span class='label'>class:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+</span>  <span class='label'>class:</span>          <span class='kw'>nil</span><span class='comma'>,</span>
 
   <span class='comment'># This allows to specify a default relation that will be taken if no
 </span>  <span class='comment'># relation is given. This must be specified as a Proc returning the
 </span>  <span class='comment'># relation. Set this to `false` for no default. If this is set to `nil`,
 </span>  <span class='comment'># it will try to infer the default from the option `class` (if given).
-</span>  <span class='label'>default:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+</span>  <span class='label'>default:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
 
   <span class='comment'># Allows to restrict the number of fields / values the relation must
 </span>  <span class='comment'># select. This is particularly useful if you&#39;re using the query as a
 </span>  <span class='comment'># subquery and need it to return exactly one field. Use `nil` to not
 </span>  <span class='comment'># perform any checks.
-</span>  <span class='label'>fields:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+</span>  <span class='label'>fields:</span>         <span class='kw'>nil</span><span class='comma'>,</span>
 
   <span class='comment'># If this is set to a symbol, the relation does not have any select
 </span>  <span class='comment'># fields specified (`select_values` is empty) and `fields` is &gt; 0, it
 </span>  <span class='comment'># will automatically select the given field. Use `nil` to disable this
 </span>  <span class='comment'># behavior.
 </span>  <span class='label'>default_select:</span> <span class='symbol'>:id</span>
-<span class='rbrace'>}</span></pre></dd>
+<span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
     </dl>
   
@@ -304,7 +304,7 @@ options specified at class level using the <code>relation</code> method.</p>
 </span>  <span class='comment'># ---------------------------------------------------------------
 </span>  <span class='id identifier rubyid_fields_count'>fields_count</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_select_values'>select_values</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_fields_count'>fields_count</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:default_select</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:fields</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:fields</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_fields_count'>fields_count</span><span class='period'>.</span><span class='id identifier rubyid_zero?'>zero?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:default_select</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:fields</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:fields</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_positive?'>positive?</span>
     <span class='id identifier rubyid_relation'>relation</span> <span class='op'>=</span> <span class='id identifier rubyid_relation'>relation</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:default_select</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_fields_count'>fields_count</span> <span class='op'>=</span> <span class='int'>1</span>
   <span class='kw'>end</span>
@@ -325,9 +325,9 @@ options specified at class level using the <code>relation</code> method.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Nov 25 14:07:10 2020 by
+  Generated on Wed Feb 24 10:57:42 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.6.2).
+  0.9.26 (ruby-2.6.2).
 </div>
 
     </div>
