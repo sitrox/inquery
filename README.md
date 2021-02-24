@@ -20,6 +20,17 @@ to your `Gemfile`:
 gem 'inquery'
 ```
 
+## Compatibility
+
+Inquery is tested with the following ruby versions:
+
+* 2.5.1
+* 2.6.2
+* 2.7.1
+* 3.0.0
+
+Other ruby versions might work but are not covered by our Travis tests.
+
 ## Basic usage
 
 ```ruby

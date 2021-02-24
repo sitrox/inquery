@@ -1,5 +1,17 @@
 # Change log
 
+## 1.0.9 (2021-02-24)
+
+- Update `schemacop` to version `~> 3.0.8`
+
+- Add the following ruby versions to travis testing:
+  - `2.5.1`
+  - `2.6.2`
+  - `2.7.1`
+  - `3.0.0`
+
+- Remove ruby `2.3.0` from travis testing
+
 ## 1.0.8 (2020-11-24)
 
 - Improve support for schemacop 3.x
