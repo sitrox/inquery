@@ -10,7 +10,7 @@ module TestHelper
 
   module ClassMethods
     def setup_db
-      load File.dirname(__FILE__) + '/db/schema.rb'
+      load "#{File.dirname(__FILE__)}/db/schema.rb"
     end
 
     def setup_base_data
