@@ -8,7 +8,7 @@ module Inquery
           str? :class
           int? :fields
           sym? :default_select
-          obj? :default, [Proc, FalseClass]
+          obj? :default, classes: [Proc, FalseClass]
         end
       else
         OPTIONS_SCHEMA = Schemacop::Schema.new do
