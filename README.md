@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sitrox/inquery.svg?branch=master)](https://travis-ci.org/sitrox/inquery)
+[![Build](https://github.com/sitrox/inquery/actions/workflows/ruby.yml/badge.svg)](https://github.com/sitrox/inquery/actions/workflows/ruby.yml)
 [![Gem Version](https://badge.fury.io/rb/inquery.svg)](https://badge.fury.io/rb/inquery)
 
 # Inquery
