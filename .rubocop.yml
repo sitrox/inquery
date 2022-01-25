@@ -101,3 +101,6 @@ Style/ConditionalAssignment:
 
 Style/CaseLikeIf:
   Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
