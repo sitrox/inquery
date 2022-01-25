@@ -1,7 +1,7 @@
 task :gemspec do
   gemspec = Gem::Specification.new do |spec|
     spec.name          = 'inquery'
-    spec.version       = IO.read('VERSION').chomp
+    spec.version       = File.read('VERSION').chomp
     spec.authors       = ['Sitrox']
     spec.summary       = %(
       A skeleton that allows extracting queries into atomic, reusable classes.
@@ -25,7 +25,7 @@ task :gemspec do
     spec.add_dependency 'schemacop', '~> 3.0.8'
   end
 
-  File.open('inquery.gemspec', 'w') { |f| f.write(gemspec.to_ruby.strip) }
+  File.write('inquery.gemspec', gemspec.to_ruby.strip)
 end
 
 require 'rake/testtask'

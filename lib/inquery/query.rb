@@ -42,11 +42,13 @@ module Inquery
       results
     end
 
+    # rubocop:disable Style/OpenStructUse
     # Returns a copy of the query's params, wrapped in an OpenStruct object for
     # easyer access.
     def osparams
       @osparams ||= OpenStruct.new(params)
     end
+    # rubocop:enable Style/OpenStructUse
 
     # Provides a connection to the database. May be overridden if a different
     # connection is desired. Defaults to `ActiveRecord::Base.connection`.
