@@ -5,6 +5,7 @@ AllCops:
     - 'vendor/**/*'
     - 'tmp/**/*'
     - 'inquery.gemspec'
+  SuggestExtensions: false
 
   DisplayCopNames: true
 
@@ -100,4 +101,7 @@ Style/ConditionalAssignment:
   Enabled: false
 
 Style/CaseLikeIf:
+  Enabled: false
+
+Style/OpenStructUse:
   Enabled: false

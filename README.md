@@ -1,4 +1,5 @@
-[![Build](https://github.com/sitrox/inquery/actions/workflows/ruby.yml/badge.svg)](https://github.com/sitrox/inquery/actions/workflows/ruby.yml)
+[![Unit tests](https://github.com/sitrox/inquery/actions/workflows/ruby.yml/badge.svg)](https://github.com/sitrox/inquery/actions/workflows/ruby.yml)
+[![Rubocop check](https://github.com/sitrox/inquery/actions/workflows/rubocop.yml/badge.svg)](https://github.com/sitrox/inquery/actions/workflows/rubocop.yml)
 [![Gem Version](https://badge.fury.io/rb/inquery.svg)](https://badge.fury.io/rb/inquery)
 
 # Inquery
