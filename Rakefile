@@ -17,7 +17,7 @@ task :gemspec do
     spec.add_development_dependency 'sqlite3'
     spec.add_development_dependency 'haml'
     spec.add_development_dependency 'yard'
-    spec.add_development_dependency 'rubocop', '0.92.0'
+    spec.add_development_dependency 'rubocop', '1.25'
     spec.add_development_dependency 'redcarpet'
     spec.add_dependency 'minitest'
     spec.add_dependency 'activesupport'
