@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/sitrox/inquery.svg?branch=master)](https://travis-ci.org/sitrox/inquery)
+[![Unit tests](https://github.com/sitrox/inquery/actions/workflows/ruby.yml/badge.svg)](https://github.com/sitrox/inquery/actions/workflows/ruby.yml)
+[![Rubocop check](https://github.com/sitrox/inquery/actions/workflows/rubocop.yml/badge.svg)](https://github.com/sitrox/inquery/actions/workflows/rubocop.yml)
 [![Gem Version](https://badge.fury.io/rb/inquery.svg)](https://badge.fury.io/rb/inquery)
 
 # Inquery
@@ -19,6 +20,17 @@ to your `Gemfile`:
 ```ruby
 gem 'inquery'
 ```
+
+## Compatibility
+
+Inquery is tested with the following ruby versions:
+
+* 2.5.1
+* 2.6.2
+* 2.7.1
+* 3.0.1
+
+Other ruby versions might work but are not covered by our automated tests.
 
 ## Basic usage
 
@@ -325,4 +337,4 @@ in his [blog post](http://craftingruby.com/posts/2015/06/29/query-objects-throug
 
 ## Copyright
 
-Copyright (c) 2020 Sitrox. See `LICENSE` for further details.
+Copyright © 2016 - 2022 Sitrox. See `LICENSE` for further details.

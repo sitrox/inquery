@@ -1,6 +1,7 @@
 module Inquery
 end
 
+require 'uri'
 require 'schemacop'
 
 require 'inquery/exceptions'

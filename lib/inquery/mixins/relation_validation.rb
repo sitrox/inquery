@@ -8,7 +8,7 @@ module Inquery
           str? :class
           int? :fields
           sym? :default_select
-          obj? :default, [Proc, FalseClass]
+          obj? :default, classes: [Proc, FalseClass]
         end
       else
         OPTIONS_SCHEMA = Schemacop::Schema.new do
@@ -24,26 +24,26 @@ module Inquery
         # `nil` to not perform any checks. The `class` attribute will also be
         # taken to infer a default if no relation is given and you didn't
         # specify any `default`.
-        class: nil,
+        class:          nil,
 
         # This allows to specify a default relation that will be taken if no
         # relation is given. This must be specified as a Proc returning the
         # relation. Set this to `false` for no default. If this is set to `nil`,
         # it will try to infer the default from the option `class` (if given).
-        default: nil,
+        default:        nil,
 
         # Allows to restrict the number of fields / values the relation must
         # select. This is particularly useful if you're using the query as a
         # subquery and need it to return exactly one field. Use `nil` to not
         # perform any checks.
-        fields: nil,
+        fields:         nil,
 
         # If this is set to a symbol, the relation does not have any select
         # fields specified (`select_values` is empty) and `fields` is > 0, it
         # will automatically select the given field. Use `nil` to disable this
         # behavior.
         default_select: :id
-      }
+      }.freeze
 
       included do
         class_attribute :_relation_options
@@ -91,7 +91,7 @@ module Inquery
         # ---------------------------------------------------------------
         fields_count = relation.select_values.size
 
-        if fields_count == 0 && options[:default_select] && options[:fields] && options[:fields] > 0
+        if fields_count.zero? && options[:default_select] && options[:fields] && (options[:fields]).positive?
           relation = relation.select(options[:default_select])
           fields_count = 1
         end
