@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
 
   if s.respond_to? :add_runtime_dependency then
     s.add_development_dependency(%q<appraisal>.freeze, [">= 0"])
-    s.add_development_dependency(%q<bundler>.freeze, [">= 0"])
     s.add_development_dependency(%q<rake>.freeze, [">= 0"])
     s.add_development_dependency(%q<sqlite3>.freeze, [">= 0"])
     s.add_development_dependency(%q<haml>.freeze, [">= 0"])
@@ -33,7 +32,6 @@ Gem::Specification.new do |s|
     s.add_runtime_dependency(%q<schemacop>.freeze, ["~> 3.0.8"])
   else
     s.add_dependency(%q<appraisal>.freeze, [">= 0"])
-    s.add_dependency(%q<bundler>.freeze, [">= 0"])
     s.add_dependency(%q<rake>.freeze, [">= 0"])
     s.add_dependency(%q<sqlite3>.freeze, [">= 0"])
     s.add_dependency(%q<haml>.freeze, [">= 0"])

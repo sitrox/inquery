@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.10 (2022-05-19)
+
+* Update gem-internal ruby version and remove `bundler` from gemspec
+
 ## 1.0.9 (2021-02-24)
 
 - Update `schemacop` to version `~> 3.0.8`
