@@ -87,6 +87,7 @@ to your <code>Gemfile</code>:</p>
 <li>2.6.2</li>
 <li>2.7.1</li>
 <li>3.0.1</li>
+<li>3.2.1</li>
 </ul>
 
 <p>Other ruby versions might work but are not covered by our automated tests.</p>
@@ -343,7 +344,9 @@ access.</p>
 </code></pre>
 
 <p>Inquery supports both schemacop specification versions 2 and 3 using the methods
-<code>schema</code> / <code>schema2</code> for version 2 and method <code>schema3</code> for version 3.</p>
+<code>schema2</code> for version 2 and method <code>schema3</code> for version 3. You can also use the
+method <code>schema</code>, which defaults to the schema version configured using
+<code>config.default_schema_version</code> (see <a href="#Configuration">Configuration</a>).</p>
 
 <h2 id="rails-integration">Rails integration</h2>
 
@@ -351,6 +354,17 @@ access.</p>
 perfectly integrated into any Rails application. It has proven to be a winning
 concept to extract all complex queries into separate classes that are
 independently executable and testable.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Inquery can be configured globally using an optional initializer:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># config/initializers/inquery.rb
+</span><span class='const'><span class='object_link'><a href="Inquery.html" title="Inquery (module)">Inquery</a></span></span><span class='period'>.</span><span class='id identifier rubyid_setup'><span class='object_link'><a href="Inquery.html#setup-class_method" title="Inquery.setup (method)">setup</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
+  <span class='comment'># Specify the default schemacop schema version. Can be one of 2 or 3.
+</span>  <span class='comment'># config.default_schema_version = 2
+</span><span class='kw'>end</span>
+</code></pre>
 
 <h3 id="directory-structure">Directory structure</h3>
 
@@ -383,15 +397,16 @@ query classes.</li>
 <h2 id="contributors">Contributors</h2>
 
 <p>Thanks to Jeroen Weeink for his insights regarding using query classes as scopes
-in his <a href="http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html">blog post</a>.</p>
+in his <a href="http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html">blog
+post</a>.</p>
 
 <h2 id="copyright">Copyright</h2>
 
-<p>Copyright © 2016 - 2022 Sitrox. See <code>LICENSE</code> for further details.</p>
+<p>Copyright © 2016 - 2023 Sitrox. See <code>LICENSE</code> for further details.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Thu May 19 10:36:15 2022 by
+  Generated on Thu Aug 24 11:11:23 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.27 (ruby-3.0.1).
 </div>
