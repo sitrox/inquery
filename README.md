@@ -348,7 +348,8 @@ There are some key benefits to this approach:
 ## Contributors
 
 Thanks to Jeroen Weeink for his insights regarding using query classes as scopes
-in his [blog post](http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html).
+in his [blog
+post](http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html).
 
 ## Copyright
 
