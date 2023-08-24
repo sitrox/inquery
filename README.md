@@ -298,7 +298,9 @@ end
 ```
 
 Inquery supports both schemacop specification versions 2 and 3 using the methods
-`schema` / `schema2` for version 2 and method `schema3` for version 3.
+`schema2` for version 2 and method `schema3` for version 3. You can also use the
+method `schema`, which defaults to the schema version configured using
+`config.default_schema_version` (see [Configuration](#Configuration)).
 
 ## Rails integration
 
@@ -306,6 +308,18 @@ While it is optional, Inquery has been written from the ground up to be
 perfectly integrated into any Rails application. It has proven to be a winning
 concept to extract all complex queries into separate classes that are
 independently executable and testable.
+
+## Configuration
+
+Inquery can be configured globally using an optional initializer:
+
+```ruby
+# config/initializers/inquery.rb
+Inquery.setup do |config|
+  # Specify the default schemacop schema version. Can be one of 2 or 3.
+  # config.default_schema_version = 2
+end
+```
 
 ### Directory structure
 

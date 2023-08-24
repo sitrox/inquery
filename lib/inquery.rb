@@ -1,4 +1,11 @@
 module Inquery
+  mattr_accessor :default_schema_version
+  self.default_schema_version = 2
+
+  # Setup method that should be called in a dedicated initializer.
+  def self.setup
+    yield self
+  end
 end
 
 require 'uri'

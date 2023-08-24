@@ -1,5 +1,13 @@
 # Change log
 
+## 1.0.11 (2023-08-24)
+
+* Add configuration option `config.default_schema_version` that allows you to
+  specify the schema version in effect when using the `schema` DSL method. For
+  backwards compatibility, this new setting defaults to `2`.
+
+  Internal reference: `#115859`.
+
 ## 1.0.10 (2022-05-19)
 
 * Update gem-internal ruby version and remove `bundler` from gemspec

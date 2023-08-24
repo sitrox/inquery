@@ -23,7 +23,14 @@ module Inquery
 
         # @see schema2
         def schema(*args, &block)
-          schema2(*args, &block)
+          case Inquery.default_schema_version
+          when 2
+            schema2(*args, &block)
+          when 3
+            schema3(*args, &block)
+          else
+            fail 'Schemacop schema versions supported are 2 and 3.'
+          end
         end
       end
     end
