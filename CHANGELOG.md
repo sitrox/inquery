@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Add integration tests for RawSqlUtils mixin (`san` and `exec_query` methods)
 * Move all development dependencies from gemspec to Gemfile for cleaner
   separation of runtime and development dependencies
 * Remove unused dependencies: `yard`, `haml`, and `redcarpet`
