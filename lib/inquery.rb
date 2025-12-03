@@ -9,6 +9,8 @@ module Inquery
 end
 
 require 'uri'
+require 'logger'
+require 'ostruct'
 require 'schemacop'
 
 require 'inquery/exceptions'

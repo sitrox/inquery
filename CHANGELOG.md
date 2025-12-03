@@ -1,5 +1,12 @@
 # Change log
 
+## Unreleased
+
+* Fix Ruby 3.0+ compatibility by explicitly requiring `logger` and `ostruct`
+* Constrain `sqlite3` to version `~> 1.4.0` for Rails 6.1 and 7.0 to avoid
+  version conflicts
+* Update `RUBY_VERSION` to `ruby-3.3.5`
+
 ## 1.0.11 (2023-08-24)
 
 * Add configuration option `config.default_schema_version` that allows you to
