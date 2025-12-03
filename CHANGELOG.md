@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Update RuboCop from version 1.25 to ~> 1.60 and fix new style violations
 * Replace deprecated `OpenStruct` with `MethodAccessibleHash` to ensure
   compatibility with Ruby 3.5+
 * Remove debug code from `Query::Chainable#call` method

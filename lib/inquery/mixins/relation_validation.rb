@@ -91,7 +91,7 @@ module Inquery
         # ---------------------------------------------------------------
         fields_count = relation.select_values.size
 
-        if fields_count.zero? && options[:default_select] && options[:fields] && (options[:fields]).positive?
+        if fields_count.zero? && options[:default_select] && options[:fields]&.positive?
           relation = relation.select(options[:default_select])
           fields_count = 1
         end

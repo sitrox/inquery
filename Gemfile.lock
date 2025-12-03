@@ -47,6 +47,8 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     json (2.16.0)
+    language_server-protocol (3.17.0.5)
+    lint_roller (1.1.0)
     logger (1.7.0)
     minitest (5.26.2)
     parallel (1.27.0)
@@ -59,16 +61,17 @@ GEM
     rake (13.3.1)
     redcarpet (3.6.1)
     regexp_parser (2.11.3)
-    rexml (3.4.4)
-    rubocop (1.25.0)
+    rubocop (1.81.7)
+      json (~> 2.3)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.1.0)
       parallel (~> 1.10)
-      parser (>= 3.1.0.0)
+      parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8, < 3.0)
-      rexml
-      rubocop-ast (>= 1.15.1, < 2.0)
+      regexp_parser (>= 2.9.3, < 3.0)
+      rubocop-ast (>= 1.47.1, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 3.0)
+      unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.48.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
@@ -100,7 +103,9 @@ GEM
     timeout (0.4.4)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (2.6.0)
+    unicode-display_width (3.2.0)
+      unicode-emoji (~> 4.1)
+    unicode-emoji (4.1.0)
     uri (1.1.1)
     yard (0.9.37)
 
@@ -122,7 +127,7 @@ DEPENDENCIES
   inquery!
   rake
   redcarpet
-  rubocop (= 1.25)
+  rubocop (~> 1.60)
   simplecov
   sqlite3
   yard
