@@ -43,5 +43,91 @@ module Inquery
       result = Queries::Group::FetchAsJson.run
       assert_equal Group.all.to_json, result
     end
+
+    def test_query_with_optional_params
+      query_class = Class.new(Inquery::Query) do
+        schema3 do
+          str! :name
+          int? :age
+        end
+
+        def call
+          User.where(name: osparams.name)
+        end
+      end
+
+      # With both params
+      result = query_class.run(name: 'Alice', age: 30)
+      assert_kind_of ActiveRecord::Relation, result
+
+      # With only required param
+      result = query_class.run(name: 'Alice')
+      assert_kind_of ActiveRecord::Relation, result
+    end
+
+    def test_query_without_schema
+      query_class = Class.new(Inquery::Query) do
+        def call
+          User.all
+        end
+      end
+
+      result = query_class.run
+      assert_equal User.all, result
+    end
+
+    def test_query_with_empty_result
+      query_class = Class.new(Inquery::Query) do
+        def call
+          User.where('1=0')
+        end
+      end
+
+      result = query_class.run
+      assert_empty result.to_a
+    end
+
+    def test_query_returns_nil
+      query_class = Class.new(Inquery::Query) do
+        def call
+          nil
+        end
+      end
+
+      result = query_class.run
+      assert_nil result
+    end
+
+    def test_query_with_process_method
+      query_class = Class.new(Inquery::Query) do
+        def call
+          User.all
+        end
+
+        def process(results)
+          results.count
+        end
+      end
+
+      result = query_class.run
+      assert_equal 3, result
+    end
+
+    def test_osparams_returns_method_accessible_hash
+      query_class = Class.new(Inquery::Query) do
+        schema3 do
+          str! :name
+        end
+
+        def call
+          osparams
+        end
+      end
+
+      result = query_class.run(name: 'Alice')
+      assert_kind_of Inquery::MethodAccessibleHash, result
+      assert_equal 'Alice', result.name
+      assert_equal 'Alice', result[:name]
+    end
   end
 end

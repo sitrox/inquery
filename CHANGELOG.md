@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Increase test coverage from 87.1% to 90.97% by adding tests for error
+  handling, relation validation edge cases, and schema validation
 * Add integration tests for RawSqlUtils mixin (`san` and `exec_query` methods)
 * Move all development dependencies from gemspec to Gemfile for cleaner
   separation of runtime and development dependencies
