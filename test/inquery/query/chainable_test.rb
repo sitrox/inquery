@@ -62,6 +62,18 @@ module Inquery
         result = Queries::Group::FilterWithColor.run(Group.where('id > 2'), color: 'green')
         assert_equal Group.find([3]), result.to_a
       end
+
+      def test_call_not_implemented_error
+        # Create an anonymous chainable query class that doesn't override call
+        query_class = Class.new(Inquery::Query::Chainable) do
+          relation class: 'Group'
+        end
+
+        # Should raise NotImplementedError when call is not overridden
+        assert_raises(NotImplementedError) do
+          query_class.run(Group.all)
+        end
+      end
     end
   end
 end

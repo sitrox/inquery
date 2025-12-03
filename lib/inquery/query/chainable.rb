@@ -7,10 +7,6 @@ module Inquery
       return new(*args).call
     end
 
-    def call(*args)
-      fail args.inspect
-    end
-
     attr_reader :relation
 
     def initialize(*args)
