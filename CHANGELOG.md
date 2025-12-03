@@ -6,6 +6,8 @@
 * Constrain `sqlite3` to version `~> 1.4.0` for Rails 6.1 and 7.0 to avoid
   version conflicts
 * Update `RUBY_VERSION` to `ruby-3.3.5`
+* Add support for Rails 7.1, 7.2, 8.0, and 8.1
+* Add support for Ruby 3.2, 3.3, and 3.4
 
 ## 1.0.11 (2023-08-24)
 
