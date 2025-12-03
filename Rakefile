@@ -3,6 +3,7 @@ task :gemspec do
     spec.name          = 'inquery'
     spec.version       = File.read('VERSION').chomp
     spec.authors       = ['Sitrox']
+    spec.homepage      = 'https://github.com/sitrox/inquery'
     spec.summary       = %(
       A skeleton that allows extracting queries into atomic, reusable classes.
     )
