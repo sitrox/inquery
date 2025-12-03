@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+* Add inline documentation to Query, Query::Chainable, and RawSqlUtils classes
+* Add MIGRATION.md guide with examples for migrating from raw ActiveRecord
+  queries and upgrading between Inquery versions
 * Refactor argument parsing in `Query::Chainable` for improved readability and
   maintainability while preserving backward compatibility
 * Increase test coverage from 87.1% to 90.97% by adding tests for error
