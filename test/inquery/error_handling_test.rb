@@ -49,7 +49,7 @@ module Inquery
       end
 
       assert_raises(Inquery::Exceptions::UnknownCallSignature) do
-        query_class.run("not a relation")
+        query_class.run('not a relation')
       end
     end
 

@@ -19,25 +19,25 @@ module Inquery
 
       def test_san_sanitizes_sql_with_variables
         query = TestQuery.new
-        result = query.san("SELECT * FROM users WHERE id = ?", 1)
+        result = query.san('SELECT * FROM users WHERE id = ?', 1)
 
         assert_kind_of String, result
-        assert_includes result, "SELECT * FROM users WHERE id = 1"
+        assert_includes result, 'SELECT * FROM users WHERE id = 1'
       end
 
       def test_san_handles_multiple_variables
         query = TestQuery.new
-        result = query.san("SELECT * FROM users WHERE name = ? AND id = ?", 'Alice', 1)
+        result = query.san('SELECT * FROM users WHERE name = ? AND id = ?', 'Alice', 1)
 
         assert_kind_of String, result
-        assert_includes result, "SELECT * FROM users WHERE"
-        assert_includes result, "Alice"
-        assert_includes result, "1"
+        assert_includes result, 'SELECT * FROM users WHERE'
+        assert_includes result, 'Alice'
+        assert_includes result, '1'
       end
 
       def test_san_handles_special_characters
         query = TestQuery.new
-        result = query.san("SELECT * FROM users WHERE name = ?", "O'Brien")
+        result = query.san('SELECT * FROM users WHERE name = ?', "O'Brien")
 
         assert_kind_of String, result
         # ActiveRecord escapes quotes using SQL standard (doubled quotes)
@@ -46,7 +46,7 @@ module Inquery
 
       def test_exec_query_executes_sql
         query = TestQuery.new
-        sql = query.san("SELECT * FROM users WHERE id = ?", 1)
+        sql = query.san('SELECT * FROM users WHERE id = ?', 1)
         result = query.exec_query(sql)
 
         assert_kind_of ActiveRecord::Result, result
@@ -56,7 +56,7 @@ module Inquery
 
       def test_exec_query_returns_multiple_rows
         query = TestQuery.new
-        sql = "SELECT * FROM users ORDER BY id"
+        sql = 'SELECT * FROM users ORDER BY id'
         result = query.exec_query(sql)
 
         assert_kind_of ActiveRecord::Result, result
