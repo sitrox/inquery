@@ -23,32 +23,33 @@ module Inquery
     private
 
     def parse_init_args(*args)
-      # new(relation)
-      if (args[0].is_a?(ActiveRecord::Relation) || args[0].class < ActiveRecord::Base) && args[1].nil?
-        relation = args[0]
-        params = {}
+      first_arg = args[0]
+      second_arg = args[1]
 
-      # new(params)
-      elsif args[0].is_a?(Hash) && args[1].nil?
-        relation = nil
-        params = args[0]
+      # new() - no arguments
+      return [nil, {}] if args.empty?
 
-      # new(relation, params)
-      elsif (args[0].is_a?(ActiveRecord::Relation) || args[0].class < ActiveRecord::Base) && args[1].is_a?(Hash)
-        relation = args[0]
-        params = args[1]
-
-      # new()
-      elsif args.empty?
-        relation = nil
-        params = {}
-
-      # Unknown
-      else
-        fail Inquery::Exceptions::UnknownCallSignature, "Unknown call signature for the query constructor: #{args.collect(&:class)}."
+      # new(relation) or new(params)
+      if second_arg.nil?
+        if relation_like?(first_arg)
+          return [first_arg, {}]
+        elsif first_arg.is_a?(Hash)
+          return [nil, first_arg]
+        end
       end
 
-      return relation, params
+      # new(relation, params)
+      if relation_like?(first_arg) && second_arg.is_a?(Hash)
+        return [first_arg, second_arg]
+      end
+
+      # Unknown signature
+      fail Inquery::Exceptions::UnknownCallSignature,
+           "Unknown call signature for the query constructor: #{args.collect(&:class)}."
+    end
+
+    def relation_like?(obj)
+      obj.is_a?(ActiveRecord::Relation) || (obj.class < ActiveRecord::Base)
     end
   end
 end

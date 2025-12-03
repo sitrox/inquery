@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Refactor argument parsing in `Query::Chainable` for improved readability and
+  maintainability while preserving backward compatibility
 * Increase test coverage from 87.1% to 90.97% by adding tests for error
   handling, relation validation edge cases, and schema validation
 * Add integration tests for RawSqlUtils mixin (`san` and `exec_query` methods)
