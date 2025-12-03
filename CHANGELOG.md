@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+* Move all development dependencies from gemspec to Gemfile for cleaner
+  separation of runtime and development dependencies
+* Remove unused dependencies: `yard`, `haml`, and `redcarpet`
+* Remove YARD documentation files and configuration
 * Update RuboCop from version 1.25 to ~> 1.60 and fix new style violations
 * Replace deprecated `OpenStruct` with `MethodAccessibleHash` to ensure
   compatibility with Ruby 3.5+

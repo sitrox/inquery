@@ -12,15 +12,6 @@ task :gemspec do
     spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
     spec.require_paths = ['lib']
 
-    spec.add_development_dependency 'appraisal'
-    spec.add_development_dependency 'rake'
-    spec.add_development_dependency 'simplecov'
-    spec.add_development_dependency 'sqlite3'
-    spec.add_development_dependency 'haml'
-    spec.add_development_dependency 'yard'
-    spec.add_development_dependency 'rubocop', '~> 1.60'
-    spec.add_development_dependency 'redcarpet'
-    spec.add_dependency 'minitest'
     spec.add_dependency 'activesupport'
     spec.add_dependency 'activerecord'
     spec.add_dependency 'schemacop', '~> 3.0.8'

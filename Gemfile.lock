@@ -4,7 +4,6 @@ PATH
     inquery (1.0.11)
       activerecord
       activesupport
-      minitest
       schemacop (~> 3.0.8)
 
 GEM
@@ -40,10 +39,6 @@ GEM
     connection_pool (2.5.5)
     docile (1.4.1)
     drb (2.2.3)
-    haml (7.0.2)
-      temple (>= 0.8.2)
-      thor
-      tilt
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     json (2.16.0)
@@ -59,7 +54,6 @@ GEM
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.3.1)
-    redcarpet (3.6.1)
     regexp_parser (2.11.3)
     rubocop (1.81.7)
       json (~> 2.3)
@@ -97,9 +91,7 @@ GEM
     sqlite3 (2.8.1-x86_64-darwin)
     sqlite3 (2.8.1-x86_64-linux-gnu)
     sqlite3 (2.8.1-x86_64-linux-musl)
-    temple (0.10.4)
     thor (1.4.0)
-    tilt (2.6.1)
     timeout (0.4.4)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -107,7 +99,6 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
     uri (1.1.1)
-    yard (0.9.37)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -123,14 +114,12 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal
-  haml
   inquery!
+  minitest
   rake
-  redcarpet
   rubocop (~> 1.60)
   simplecov
   sqlite3
-  yard
 
 BUNDLED WITH
    2.5.18

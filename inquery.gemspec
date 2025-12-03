@@ -17,15 +17,6 @@ Gem::Specification.new do |s|
 
   s.specification_version = 4
 
-  s.add_development_dependency(%q<appraisal>.freeze, [">= 0".freeze])
-  s.add_development_dependency(%q<rake>.freeze, [">= 0".freeze])
-  s.add_development_dependency(%q<simplecov>.freeze, [">= 0".freeze])
-  s.add_development_dependency(%q<sqlite3>.freeze, [">= 0".freeze])
-  s.add_development_dependency(%q<haml>.freeze, [">= 0".freeze])
-  s.add_development_dependency(%q<yard>.freeze, [">= 0".freeze])
-  s.add_development_dependency(%q<rubocop>.freeze, ["~> 1.60".freeze])
-  s.add_development_dependency(%q<redcarpet>.freeze, [">= 0".freeze])
-  s.add_runtime_dependency(%q<minitest>.freeze, [">= 0".freeze])
   s.add_runtime_dependency(%q<activesupport>.freeze, [">= 0".freeze])
   s.add_runtime_dependency(%q<activerecord>.freeze, [">= 0".freeze])
   s.add_runtime_dependency(%q<schemacop>.freeze, ["~> 3.0.8".freeze])
