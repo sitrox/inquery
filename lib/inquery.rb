@@ -10,10 +10,10 @@ end
 
 require 'uri'
 require 'logger'
-require 'ostruct'
 require 'schemacop'
 
 require 'inquery/exceptions'
+require 'inquery/method_accessible_hash'
 require 'inquery/mixins/schema_validation'
 require 'inquery/mixins/relation_validation'
 require 'inquery/mixins/raw_sql_utils'

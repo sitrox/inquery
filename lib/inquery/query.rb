@@ -42,10 +42,10 @@ module Inquery
       results
     end
 
-    # Returns a copy of the query's params, wrapped in an OpenStruct object for
-    # easyer access.
+    # Returns a copy of the query's params, wrapped in a MethodAccessibleHash
+    # object for convenient access.
     def osparams
-      @osparams ||= OpenStruct.new(params)
+      @osparams ||= MethodAccessibleHash.new(params)
     end
 
     # Provides a connection to the database. May be overridden if a different

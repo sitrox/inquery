@@ -2,7 +2,10 @@
 
 ## Unreleased
 
-* Fix Ruby 3.0+ compatibility by explicitly requiring `logger` and `ostruct`
+* Replace deprecated `OpenStruct` with `MethodAccessibleHash` to ensure
+  compatibility with Ruby 3.5+
+* Remove debug code from `Query::Chainable#call` method
+* Fix Ruby 3.0+ compatibility by explicitly requiring `logger`
 * Constrain `sqlite3` to version `~> 1.4.0` for Rails 6.1 and 7.0 to avoid
   version conflicts
 * Update `RUBY_VERSION` to `ruby-3.3.5`
