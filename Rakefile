@@ -13,6 +13,7 @@ task :gemspec do
 
     spec.add_development_dependency 'appraisal'
     spec.add_development_dependency 'rake'
+    spec.add_development_dependency 'simplecov'
     spec.add_development_dependency 'sqlite3'
     spec.add_development_dependency 'haml'
     spec.add_development_dependency 'yard'

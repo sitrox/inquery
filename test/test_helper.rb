@@ -1,3 +1,9 @@
+require 'simplecov'
+SimpleCov.start do
+  add_filter '/test/'
+  add_filter '/vendor/'
+end
+
 require 'logger'
 require 'active_record'
 require 'minitest/autorun'
