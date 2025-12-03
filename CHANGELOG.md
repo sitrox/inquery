@@ -7,8 +7,9 @@
   version conflicts
 * Update `RUBY_VERSION` to `ruby-3.3.5`
 * Add support for Rails 7.1, 7.2, 8.0, and 8.1
-* Add support for Ruby 3.2 and 3.3
-* Note: Ruby 3.4 support pending sqlite3 gem compatibility
+* Add support for Ruby 3.2, 3.3, and 3.4
+* Update sqlite3 gem requirement to `>= 2.5` for Rails 7.2+ to ensure Ruby
+  3.4 compatibility
 
 ## 1.0.11 (2023-08-24)
 

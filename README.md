@@ -34,8 +34,7 @@ Inquery is tested against multiple Ruby and Rails version combinations. The foll
 | 3.1.0        | -         | -         | -         | -         | ✓         | ✓         | -         | -         | -         |
 | 3.2.0        | -         | -         | -         | -         | ✓         | ✓         | ✓         | -         | -         |
 | 3.3.0        | -         | -         | -         | -         | ✓         | ✓         | ✓         | ✓         | ✓         |
-
-**Note:** Ruby 3.4 support is pending sqlite3 gem compatibility and will be added once available.
+| 3.4.1        | -         | -         | -         | -         | -         | -         | ✓         | ✓         | ✓         |
 
 Other Ruby/Rails version combinations might work but are not covered by our automated tests.
 
