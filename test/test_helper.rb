@@ -1,7 +1,11 @@
-require 'simplecov'
-SimpleCov.start do
-  add_filter '/test/'
-  add_filter '/vendor/'
+begin
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter '/test/'
+    add_filter '/vendor/'
+  end
+rescue LoadError
+  # SimpleCov not available, skip coverage reporting
 end
 
 require 'logger'
