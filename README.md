@@ -23,15 +23,21 @@ gem 'inquery'
 
 ## Compatibility
 
-Inquery is tested with the following ruby versions:
+Inquery is tested against multiple Ruby and Rails version combinations. The following table shows the compatibility matrix:
 
-* 2.5.1
-* 2.6.2
-* 2.7.1
-* 3.0.1
-* 3.2.1
+| Ruby Version | Rails 5.1 | Rails 5.2 | Rails 6.0 | Rails 6.1 | Rails 7.0 | Rails 7.1 | Rails 7.2 | Rails 8.0 | Rails 8.1 |
+|--------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| 2.5.1        | ✓         | ✓         | ✓         | ✓         | -         | -         | -         | -         | -         |
+| 2.6.2        | -         | ✓         | ✓         | ✓         | -         | -         | -         | -         | -         |
+| 2.7.1        | -         | -         | ✓         | ✓         | ✓         | -         | -         | -         | -         |
+| 3.0.1        | -         | -         | -         | ✓         | ✓         | -         | -         | -         | -         |
+| 3.1.0        | -         | -         | -         | -         | ✓         | ✓         | -         | -         | -         |
+| 3.2.0        | -         | -         | -         | -         | ✓         | ✓         | ✓         | -         | -         |
+| 3.3.0        | -         | -         | -         | -         | ✓         | ✓         | ✓         | ✓         | ✓         |
 
-Other ruby versions might work but are not covered by our automated tests.
+**Note:** Ruby 3.4 support is pending sqlite3 gem compatibility and will be added once available.
+
+Other Ruby/Rails version combinations might work but are not covered by our automated tests.
 
 ## Basic usage
 
