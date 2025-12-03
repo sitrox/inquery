@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 1.1.0 (2025-12-03)
 
 * Add inline documentation to Query, Query::Chainable, and RawSqlUtils classes
 * Add MIGRATION.md guide with examples for migrating from raw ActiveRecord

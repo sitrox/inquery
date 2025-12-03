@@ -147,7 +147,7 @@ User.active.premium
 
 ## Migrating Between Inquery Versions
 
-### Upcoming Release (1.0.12)
+### 1.1.0
 
 #### OpenStruct Removed
 
