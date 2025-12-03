@@ -12,9 +12,9 @@ task :gemspec do
     spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
     spec.require_paths = ['lib']
 
-    spec.add_dependency 'activesupport'
-    spec.add_dependency 'activerecord'
-    spec.add_dependency 'schemacop', '~> 3.0.8'
+    spec.add_dependency 'activesupport', '>= 5.1'
+    spec.add_dependency 'activerecord', '>= 5.1'
+    spec.add_dependency 'schemacop', '>= 3.0.8', '< 4.0'
   end
 
   File.write('inquery.gemspec', gemspec.to_ruby.strip)

@@ -2,9 +2,9 @@ PATH
   remote: .
   specs:
     inquery (1.0.11)
-      activerecord
-      activesupport
-      schemacop (~> 3.0.8)
+      activerecord (>= 5.1)
+      activesupport (>= 5.1)
+      schemacop (>= 3.0.8, < 4.0)
 
 GEM
   remote: https://rubygems.org/

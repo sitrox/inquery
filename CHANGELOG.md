@@ -26,6 +26,9 @@
 * Add support for Ruby 3.2, 3.3, and 3.4
 * Update sqlite3 gem requirement to `>= 2.5` for Rails 7.2+ to ensure Ruby
   3.4 compatibility
+* Add explicit version constraints for runtime dependencies: `activesupport`
+  and `activerecord` now require `>= 5.1`, `schemacop` allows `>= 3.0.8, < 4.0`
+  for better dependency resolution and compatibility
 
 ## 1.0.11 (2023-08-24)
 
