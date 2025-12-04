@@ -5,6 +5,7 @@ AllCops:
     - 'vendor/**/*'
     - 'tmp/**/*'
     - 'inquery.gemspec'
+    - 'gemfiles/**/*'
   SuggestExtensions: false
 
   DisplayCopNames: true
