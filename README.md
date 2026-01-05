@@ -359,4 +359,4 @@ post](http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html
 
 ## Copyright
 
-Copyright © 2016 - 2025 Sitrox. See `LICENSE` for further details.
+Copyright © 2016 - 2026 Sitrox. See `LICENSE` for further details.
