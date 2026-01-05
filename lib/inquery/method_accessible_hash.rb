@@ -29,7 +29,7 @@ module Inquery
 
     # @private
     def method_missing(method, *args, &_block)
-      if method.end_with?('=')
+      if method.to_s.end_with?('=')
         name = method.to_s.gsub(/=$/, '')
         self[name.to_sym] = args.first
       else
