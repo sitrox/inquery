@@ -1,7 +1,10 @@
 # Change log
 
-## 1.1.0 (2025-12-03)
+## 1.1.0 (2026-01-05)
 
+* **Drop support for Ruby 2.5.1 and Rails 5.1**: The minimum supported versions
+  are now Ruby 2.6.2 and Rails 5.2. Ruby 2.5.1 reached end-of-life in March
+  2021 and is no longer available on modern CI infrastructure (Ubuntu 24.04).
 * Add inline documentation to Query, Query::Chainable, and RawSqlUtils classes
 * Add MIGRATION.md guide with examples for migrating from raw ActiveRecord
   queries and upgrading between Inquery versions

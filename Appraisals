@@ -37,8 +37,3 @@ appraise 'rails-5.2' do
   gem 'rails', '~> 5.2.6'
   gem 'sqlite3', '~> 1.3.13'
 end
-
-appraise 'rails-5.1' do
-  gem 'rails', '~> 5.1.7'
-  gem 'sqlite3', '~> 1.3.13'
-end
