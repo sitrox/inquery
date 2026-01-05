@@ -5,6 +5,11 @@
 * **Drop support for Ruby 2.5.1 and Rails 5.1**: The minimum supported versions
   are now Ruby 2.6.2 and Rails 5.2. Ruby 2.5.1 reached end-of-life in March
   2021 and is no longer available on modern CI infrastructure (Ubuntu 24.04).
+* Fix Ruby 2.6 compatibility in `MethodAccessibleHash` by converting method
+  symbol to string before calling `end_with?` (`Symbol#end_with?` was added
+  in Ruby 2.7)
+* Fix Ruby 2.5/2.6 compatibility by replacing argument forwarding syntax (`...`)
+  with explicit `*args, &block` in schema validation mixin
 * Add inline documentation to Query, Query::Chainable, and RawSqlUtils classes
 * Add MIGRATION.md guide with examples for migrating from raw ActiveRecord
   queries and upgrading between Inquery versions
