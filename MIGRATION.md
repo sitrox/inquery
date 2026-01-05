@@ -145,38 +145,11 @@ User.active.premium
 - Can add tests, documentation, and complex logic
 - Chainable and composable
 
-## Migrating Between Inquery Versions
-
-### 1.1.0
-
-#### OpenStruct Removed
-
-**What changed:**
-`OpenStruct` has been replaced with `MethodAccessibleHash` for Ruby 3.5+ compatibility.
-
-**Action required:**
-None. The API is identical. Both support dot notation and hash access:
-
-```ruby
-osparams.name     # Still works
-osparams[:name]   # Still works
-```
-
-#### Development Dependencies
-
-**What changed:**
-Development dependencies (`minitest`, `rubocop`, `simplecov`, etc.) moved from gemspec to Gemfile.
-
-**Action required:**
-None for gem users. For developers:
-- Run `bundle install` to install development dependencies
-- Dependencies are now managed via Gemfile groups
-
-### Schema Validation: Schemacop v2 vs v3
+## Schema Validation: Schemacop v2 vs v3
 
 Inquery supports both Schemacop v2 and v3 schemas. The default is v2 for backward compatibility.
 
-#### Using Schemacop v2 (default)
+### Using Schemacop v2 (default)
 
 ```ruby
 class FetchUsers < Inquery::Query
@@ -192,7 +165,7 @@ class FetchUsers < Inquery::Query
 end
 ```
 
-#### Using Schemacop v3 (recommended)
+### Using Schemacop v3 (recommended)
 
 ```ruby
 class FetchUsers < Inquery::Query
@@ -208,7 +181,7 @@ class FetchUsers < Inquery::Query
 end
 ```
 
-#### Configuring Default Schema Version
+### Configuring Default Schema Version
 
 To use Schemacop v3 by default for all queries:
 
