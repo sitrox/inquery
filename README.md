@@ -289,8 +289,11 @@ raised if the given params do not match the schema specified. See documentation
 of the Schemacop Gem for more information on how to specify schemas.
 
 Parameters can be accessed using either `params` or `osparams`. The method
-`osparams` automatically wraps `params` in an `OpenStruct` for more convenient
-access.
+`osparams` wraps `params` in a `MethodAccessibleHash`, allowing access to the
+top-level parameters via dot notation (e.g. `osparams.search`) in addition to
+the usual `[]` access. Unlike a plain `Hash`, a `MethodAccessibleHash` does not
+expose the `Hash`/`Enumerable` API, so keys named like Hash methods (e.g.
+`count`, `select`, `zip`) still return their stored value.
 
 ```ruby
 class SomeQueryClass < Inquery::Query

@@ -1,5 +1,22 @@
 # Change log
 
+## 1.1.1 (2026-06-15)
+
+* Fix `osparams` returning wrong values for keys that collide with `Hash` /
+  `Enumerable` method names (e.g. `group_by`, `count`, `zip`, `select`). Since
+  1.1.0 `MethodAccessibleHash` subclassed `Hash`, so `osparams.group_by` invoked
+  `Enumerable#group_by` (returning an `Enumerator`) instead of the stored value.
+  `MethodAccessibleHash` no longer subclasses `Hash`; it wraps an internal hash
+  and exposes only `[]`, `[]=`, `to_h`, `merge`, `==` and method-based access.
+
+  Note: as a result, the `Hash` / `Enumerable` API that was briefly available
+  in 1.1.0 (e.g. `each`, `keys`, `values`, `dig`, `map`, `**` splat) is no
+  longer exposed -- call `to_h` first if you need it. `merge` now takes a
+  positional hash (or another `MethodAccessibleHash`) instead of keyword
+  arguments.
+
+  Internal reference: `#150355`.
+
 ## 1.1.0 (2026-01-05)
 
 * **Drop support for Ruby 2.5.1 and Rails 5.1**: The minimum supported versions
