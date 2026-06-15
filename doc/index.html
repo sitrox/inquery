@@ -416,8 +416,11 @@ raised if the given params do not match the schema specified. See documentation
 of the Schemacop Gem for more information on how to specify schemas.</p>
 
 <p>Parameters can be accessed using either <code>params</code> or <code>osparams</code>. The method
-<code>osparams</code> automatically wraps <code>params</code> in an <code>OpenStruct</code> for more convenient
-access.</p>
+<code>osparams</code> wraps <code>params</code> in a <code>MethodAccessibleHash</code>, allowing access to the
+top-level parameters via dot notation (e.g. <code>osparams.search</code>) in addition to
+the usual <code>[]</code> access. Unlike a plain <code>Hash</code>, a <code>MethodAccessibleHash</code> does not
+expose the <code>Hash</code>/<code>Enumerable</code> API, so keys named like Hash methods (e.g.
+<code>count</code>, <code>select</code>, <code>zip</code>) still return their stored value.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>SomeQueryClass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Inquery.html" title="Inquery (module)">Inquery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Inquery/Query.html" title="Inquery::Query (class)">Query</a></span></span>
   <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
@@ -492,7 +495,7 @@ post</a>.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jan  5 14:06:48 2026 by
+  Generated on Mon Jun 15 10:47:42 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.3.5).
 </div>
